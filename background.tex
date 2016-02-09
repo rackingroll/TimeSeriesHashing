@@ -1,0 +1,45 @@
+\section{Background}
+\label{sec:formulation}
+
+\subsection{Preliminary Definition}
+
+In this section, we formally define some concept of this work, including Time Series, Change Point, Change Point set, Time Series Correlation.
+
+\begin{definition}[Time Series]
+A time series, denoted as $S = (s_1,s_2,...,s_m)$, where $m$ is the number of points in the time series. The timestamps of a time series, denoted as $TS = (t(s1), t(s2),..., t(sn))$, have the relationship of $t(s_i) = t(s_{i-1})+\tau$, where $\tau$is the sampling interval.
+\end{definition}
+
+In this work, we consider the change information of a time series, so the change point of a time series is defined as follow:
+\begin{definition}[Change Point]
+A time series, denoted as $S = (s_1,s_2,...,s_m)$, a change point is a time stamp $t_s(i)$that there is a change before and after this time stamp. Change contains the following types: mean change, variance change,  frequency change, and the combination between them.
+\end{definition}
+
+The definition of change point set is defined as follow:
+\begin{definition}[Change Point Set]
+A time series, denoted as
+$S = (s_1,s_2,...,s_m)$
+The timestamps of a time series, denoted as 
+$TS = (t(s1), t(s2),..., t(sn))$
+The change points set is denoted as 
+$C_X=(t_x(1),t_x(2),...,t_x(p))$
+Where $t_x(i)$ denotes the change points of time series S.
+\end{definition}
+
+
+\subsection{Change based Time Series Correlation}
+
+After define the time series, we define the correlation of this work as follow:
+\begin{definition}[Change Based Correlation] 
+Suppose we have two time series: $X_1=(x_1,x_2,...,x_m),Y_1=(y_1,y_2,...,y_m)$, The change point set of X and Y are denoted as: 
+$C_X=(t_x(1),t_x(2),...,t_x(p))$
+$C_Y=(t_y(1),t_y(2),...,t_y(q))$
+where $q$ and $p$ are numbers of change points for time series $X$ and $Y$.
+Then if $X$ and $Y$ are correlated if and only if:
+\begin{equation}
+\left\{\begin{matrix}
+p=q\\ 
+L1(C_X,C_Y)<\xi 
+\end{matrix}\right.
+\end{equation}
+where $L1(C_X,C_Y)$ denotes the L1 distance, and $\xi$ is the threshold of Time series correlation.
+\end{definition}

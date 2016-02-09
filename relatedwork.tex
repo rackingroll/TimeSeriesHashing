@@ -1,0 +1,10 @@
+\section{Related Work}
+\label{sec:relatedwork}
+In this section, we brief introduce some related works of our research.
+
+\subsection{Correlation between Time Series Data}
+Correlation between two time series has been widely studied, and some of them have been included in text books~\cite{johnson2002applied}. Pearson Correlation \cite{nagelkerke1991note} is a basic correlation measure between time series, which has been widely used in practice~\cite{Zhu:VLDB:2002}. Some extensions of Pearson correlation are also widely used. For example, lagged correlation is an extension to correlate a lagged dataset with another unlagged dataset using the Pearson product-moment method. In \cite{wu2010detecting}, the author uses the lagged-correlation to estimate the lead relationship between a set of time series. Because Pearson correlation is sensitive outliers in data set, Spearman Rank correlation and Kendall Rank correlation have been used in some scenarios~\cite{Lehman:SAS:2005} to overcome the drawbacks of Pearson correlation. In Spearman correlation, data is first sorted and each value assigned a rank, e.g., 1 is assigned to the lowest value. Spearman Rank correlation is calculated by taking the Pearson product-moment correlation of the ranks of the datasets. Kendall correlation is used to measure the similarity of the orderings of the data when ranked by each of data values. Because there is no ordering relationship among the different events, the above rank based algorithms cannot be directly used in our scenario.
+
+\subsection{LSH Hashing}
+
+

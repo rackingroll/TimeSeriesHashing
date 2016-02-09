@@ -1,0 +1,132 @@
+\begin{thebibliography}{10}
+
+\bibitem{berndt1994using}
+D.~J. Berndt and J.~Clifford.
+\newblock Using dynamic time warping to find patterns in time series.
+\newblock In {\em Knowledge Discovery and Data Mining}, pages 359--370, 1994.
+
+\bibitem{chen2013contextual}
+X.~C. Chen, K.~Steinhaeuser, S.~Boriah, S.~Chatterjee, and V.~Kumar.
+\newblock Contextual time series change detection.
+\newblock In {\em SDM}, pages 503--511. SIAM, 2013.
+
+\bibitem{chen2013dtw}
+Y.~Chen, B.~Hu, E.~Keogh, and G.~E. Batista.
+\newblock Dtw-d: time series semi-supervised learning from a single example.
+\newblock In {\em KDD}, pages 383--391. ACM, 2013.
+
+\bibitem{nagelkerke1991note}
+J.~Cohen.
+\newblock Statistical power analysis for the behavioral sciences.
+\newblock 1988.
+
+\bibitem{gretton2006kernel}
+A.~Gretton, K.~M. Borgwardt, M.~Rasch, B.~Sch{\"o}lkopf, and A.~J. Smola.
+\newblock A kernel method for the two-sample-problem.
+\newblock In {\em Advances in neural information processing systems}, pages
+  513--520, 2006.
+
+\bibitem{hamilton1994time}
+J.~D. Hamilton.
+\newblock {\em Time series analysis}, volume~2.
+\newblock Princeton university press Princeton, 1994.
+
+\bibitem{han2011data}
+J.~Han, M.~Kamber, and J.~Pei.
+\newblock {\em Data mining: concepts and techniques: concepts and techniques}.
+\newblock Elsevier, 2011.
+
+\bibitem{johnson2002applied}
+R.~A. Johnson and D.~W. Wichern.
+\newblock {\em Applied multivariate statistical analysis}.
+\newblock Pearson, 2007.
+
+\bibitem{kendall1938new}
+M.~G. Kendall.
+\newblock A new measure of rank correlation.
+\newblock {\em Biometrika}, pages 81--93, 1938.
+
+\bibitem{liu2013change}
+S.~Liu, M.~Yamada, N.~Collier, and M.~Sugiyama.
+\newblock Change-point detection in time-series data by relative density-ratio
+  estimation.
+\newblock {\em Neural Networks}, 43:72--83, 2013.
+
+\bibitem{luo2014correlating}
+C.~Luo, J.-G. Lou, Q.~Lin, Q.~Fu, R.~Ding, D.~Zhang, and Z.~Wang.
+\newblock Correlating events with time series for incident diagnosis.
+\newblock In {\em Proceedings of the 20th ACM SIGKDD international conference
+  on Knowledge discovery and data mining}, pages 1583--1592. ACM, 2014.
+
+\bibitem{moore2007basic}
+D.~S. Moore.
+\newblock {\em The basic practice of statistics}, volume~2.
+\newblock WH Freeman New York, 2007.
+
+\bibitem{mount2001bioinformatics}
+D.~W. Mount and D.~W. Mount.
+\newblock {\em Bioinformatics: sequence and genome analysis}, volume~2.
+\newblock Cold spring harbor laboratory press New York:, 2001.
+
+\bibitem{muller2007dynamic}
+M.~M{\"u}ller.
+\newblock Dynamic time warping.
+\newblock {\em Information retrieval for music and motion}, pages 69--84, 2007.
+
+\bibitem{pearson1904mathematical}
+K.~Pearson.
+\newblock {\em Mathematical contributions to the theory of evolution},
+  volume~13.
+\newblock Dulau and co., 1904.
+
+\bibitem{pirie1988spearman}
+W.~Pirie.
+\newblock Spearman rank correlation coefficient.
+\newblock {\em Encyclopedia of statistical sciences}, 1988.
+
+\bibitem{powers2011evaluation}
+D.~M. Powers.
+\newblock Evaluation: from precision, recall and f-measure to roc,
+  informedness, markedness \& correlation.
+\newblock {\em JMLT}, 2(1):37--63, 2011.
+
+\bibitem{rabiner1993fundamentals}
+L.~Rabiner and B.-H. Juang.
+\newblock Fundamentals of speech recognition.
+\newblock 1993.
+
+\bibitem{Lehman:SAS:2005}
+B.~Rosner.
+\newblock {\em Fundamentals of biostatistics}.
+\newblock Cengage Learning, 2010.
+
+\bibitem{sonka2014image}
+M.~Sonka, V.~Hlavac, and R.~Boyle.
+\newblock {\em Image processing, analysis, and machine vision}.
+\newblock Cengage Learning, 2014.
+
+\bibitem{sun2014querying}
+C.~Sun, H.~Zhang, J.-G. Lou, H.~Zhang, Q.~Wang, D.~Zhang, and S.-C. Khoo.
+\newblock Querying sequential software engineering data.
+\newblock In {\em Proceedings of the 22nd ACM SIGSOFT International Symposium
+  on Foundations of Software Engineering}, pages 700--710. ACM, 2014.
+
+\bibitem{wu2010detecting}
+D.~Wu, Y.~Ke, J.~X. Yu, S.~Y. Philip, and L.~Chen.
+\newblock Detecting leaders from correlated time series.
+\newblock In {\em Database Systems for Advanced Applications}, pages 352--367.
+  Springer, 2010.
+
+\bibitem{yang2002detecting}
+M.-H. Yang, D.~J. Kriegman, and N.~Ahuja.
+\newblock Detecting faces in images: A survey.
+\newblock {\em Pattern Analysis and Machine Intelligence, IEEE Transactions
+  on}, 24(1):34--58, 2002.
+
+\bibitem{Zhu:VLDB:2002}
+Y.~Zhu and D.~Shasha.
+\newblock Statstream: Statistical monitoring of thousands of data streams in
+  real time.
+\newblock In {\em VLDB}, pages 358--369. VLDB Endowment, 2002.
+
+\end{thebibliography}
