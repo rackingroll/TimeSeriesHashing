@@ -1,19 +1,22 @@
 \begin{thebibliography}{10}
 
-\bibitem{berndt1994using}
-D.~J. Berndt and J.~Clifford.
-\newblock Using dynamic time warping to find patterns in time series.
-\newblock In {\em Knowledge Discovery and Data Mining}, pages 359--370, 1994.
+\bibitem{adhianto2010hpctoolkit}
+L.~Adhianto, S.~Banerjee, M.~Fagan, M.~Krentel, G.~Marin, J.~Mellor-Crummey,
+  and N.~R. Tallent.
+\newblock Hpctoolkit: Tools for performance analysis of optimized parallel
+  programs.
+\newblock {\em Concurrency and Computation: Practice and Experience},
+  22(6):685--701, 2010.
 
 \bibitem{chen2013contextual}
 X.~C. Chen, K.~Steinhaeuser, S.~Boriah, S.~Chatterjee, and V.~Kumar.
 \newblock Contextual time series change detection.
 \newblock In {\em SDM}, pages 503--511. SIAM, 2013.
 
-\bibitem{chen2013dtw}
-Y.~Chen, B.~Hu, E.~Keogh, and G.~E. Batista.
-\newblock Dtw-d: time series semi-supervised learning from a single example.
-\newblock In {\em KDD}, pages 383--391. ACM, 2013.
+\bibitem{UCRArchive}
+Y.~Chen, E.~Keogh, B.~Hu, N.~Begum, A.~Bagnall, A.~Mueen, and G.~Batista.
+\newblock The ucr time series classification archive, July 2015.
+\newblock \url{www.cs.ucr.edu/~eamonn/time_series_data/}.
 
 \bibitem{nagelkerke1991note}
 J.~Cohen.
@@ -36,6 +39,19 @@ J.~Han, M.~Kamber, and J.~Pei.
 \newblock {\em Data mining: concepts and techniques: concepts and techniques}.
 \newblock Elsevier, 2011.
 
+\bibitem{holter1961new}
+N.~J. Holter.
+\newblock New method for heart studies continuous electrocardiography of active
+  subjects over long periods is now practical.
+\newblock {\em Science}, 134(3486):1214--1220, 1961.
+
+\bibitem{indyk1998approximate}
+P.~Indyk and R.~Motwani.
+\newblock Approximate nearest neighbors: towards removing the curse of
+  dimensionality.
+\newblock In {\em Proceedings of the thirtieth annual ACM symposium on Theory
+  of computing}, pages 604--613. ACM, 1998.
+
 \bibitem{johnson2002applied}
 R.~A. Johnson and D.~W. Wichern.
 \newblock {\em Applied multivariate statistical analysis}.
@@ -57,6 +73,18 @@ C.~Luo, J.-G. Lou, Q.~Lin, Q.~Fu, R.~Ding, D.~Zhang, and Z.~Wang.
 \newblock Correlating events with time series for incident diagnosis.
 \newblock In {\em Proceedings of the 20th ACM SIGKDD international conference
   on Knowledge discovery and data mining}, pages 1583--1592. ACM, 2014.
+
+\bibitem{marriott1988practical}
+H.~J.~L. Marriott and G.~S. Wagner.
+\newblock {\em Practical electrocardiography}.
+\newblock Williams \& Wilkins Baltimore, 1988.
+
+\bibitem{mccurdy2010memphis}
+C.~McCurdy and J.~Vetter.
+\newblock Memphis: Finding and fixing numa-related performance problems on
+  multi-core platforms.
+\newblock In {\em Performance Analysis of Systems \& Software (ISPASS), 2010
+  IEEE International Symposium on}, pages 87--96. IEEE, 2010.
 
 \bibitem{moore2007basic}
 D.~S. Moore.
@@ -110,6 +138,17 @@ C.~Sun, H.~Zhang, J.-G. Lou, H.~Zhang, Q.~Wang, D.~Zhang, and S.-C. Khoo.
 \newblock Querying sequential software engineering data.
 \newblock In {\em Proceedings of the 22nd ACM SIGSOFT International Symposium
   on Foundations of Software Engineering}, pages 700--710. ACM, 2014.
+
+\bibitem{tallent2009effective}
+N.~R. Tallent and J.~M. Mellor-Crummey.
+\newblock Effective performance measurement and analysis of multithreaded
+  applications.
+\newblock In {\em ACM Sigplan Notices}, volume~44, pages 229--240. ACM, 2009.
+
+\bibitem{tilley1979essentials}
+L.~P. Tilley et~al.
+\newblock {\em Essentials of canine and feline electrocardiography.}
+\newblock CV Mosby., 1979.
 
 \bibitem{wu2010detecting}
 D.~Wu, Y.~Ke, J.~X. Yu, S.~Y. Philip, and L.~Chen.

@@ -3,14 +3,6 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: TimeSeriesHashing.aux
 The style file: abbrv.bst
 Database file #1: TimeSeriesHashing.bib
-Repeated entry---line 1839 of file TimeSeriesHashing.bib
- : @inproceedings{berndt1994using
- :                               ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1861 of file TimeSeriesHashing.bib
- : @inproceedings{chen2013dtw
- :                           ,
-I'm skipping whatever remains of this entry
 Repeated entry---line 2015 of file TimeSeriesHashing.bib
  : @inproceedings{luo2014correlating
  :                                  ,
@@ -19,47 +11,52 @@ Repeated entry---line 2199 of file TimeSeriesHashing.bib
  : @book{han2011data
  :                  ,
 I'm skipping whatever remains of this entry
+Repeated entry---line 2283 of file TimeSeriesHashing.bib
+ : @misc{UCRArchive
+ :                 ,
+I'm skipping whatever remains of this entry
 Warning--empty journal in nagelkerke1991note
 Warning--empty journal in rabiner1993fundamentals
-You've used 24 entries,
+Warning--can't use both volume and number fields in tallent2009effective
+You've used 30 entries,
             2118 wiz_defined-function locations,
-            629 strings with 7293 characters,
-and the built_in function-call counts, 8722 in all, are:
-= -- 866
-> -- 388
-< -- 14
-+ -- 157
-- -- 130
-* -- 535
-:= -- 1386
-add.period$ -- 78
-call.type$ -- 24
-change.case$ -- 129
+            668 strings with 8604 characters,
+and the built_in function-call counts, 10820 in all, are:
+= -- 1070
+> -- 500
+< -- 16
++ -- 202
+- -- 168
+* -- 683
+:= -- 1733
+add.period$ -- 98
+call.type$ -- 30
+change.case$ -- 163
 chr.to.int$ -- 0
-cite$ -- 26
-duplicate$ -- 381
-empty$ -- 691
-format.name$ -- 130
-if$ -- 1895
+cite$ -- 33
+duplicate$ -- 455
+empty$ -- 851
+format.name$ -- 168
+if$ -- 2334
 int.to.chr$ -- 0
-int.to.str$ -- 24
-missing$ -- 32
-newline$ -- 123
-num.names$ -- 48
-pop$ -- 186
+int.to.str$ -- 30
+missing$ -- 39
+newline$ -- 153
+num.names$ -- 60
+pop$ -- 232
 preamble$ -- 1
-purify$ -- 113
+purify$ -- 143
 quote$ -- 0
-skip$ -- 282
+skip$ -- 334
 stack$ -- 0
-substring$ -- 492
-swap$ -- 122
-text.length$ -- 14
+substring$ -- 603
+swap$ -- 138
+text.length$ -- 16
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 80
-warning$ -- 2
-while$ -- 84
-width$ -- 26
-write$ -- 263
-(There were 4 error messages)
+type$ -- 100
+warning$ -- 3
+while$ -- 103
+width$ -- 32
+write$ -- 329
+(There were 3 error messages)
