@@ -263,7 +263,8 @@ In this section, we will compare the proposed algorithm with the baseline algori
 
 \subsubsection{Electrocardiogram Data set}
 
-The first real world dataset is ECG (Electrocardiogram) time series data set. This data set is comming from the the UCR time series Data set Archive \cite{UCRArchive}.
+The first real world dataset is ECG (Electrocardiogram) time series data set. This data set comes from the the UCR time series Data set Archive \cite{UCRArchive}. We choose four ECG data set there as showed in Table. \ref{Tab:ECGData}.
+
 
 Electrocardiography \cite{holter1961new} (ECG or EKG*) 
 is the process of recording the electrical activity of the heart over a period of time using electrodes placed on a patient's body. 
@@ -273,20 +274,20 @@ By analyzing such data, one can find some useful information hidden behind the h
 Such ECG data can be regarded as time series data. Detect the correlation between each ECG time series is a powerful tool to analyze ECG data. After knowing the correlation between different ECG data, we can use such correlation to discover the hidden relation ship between each human and disease \cite{marriott1988practical}.
 
 However, we can see from Fig.\ref{fig:ecgexample} that, ECG time series data correlation are regarded as tiny electrical change at the same time \cite{tilley1979essentials}. And the change has different patterns. As a result, some classical similarity or correlation method can not deal with such problem well, even DTW some times also fail to detect such patterns. As a result, a change based correlation is needed.
-\begin{table}
+\begin{table*}[t]
 \caption{Summary of the Four ECG Data Set}
 \centering
 
-\begin{tabular}{|c|c|c|}
-\hline Data Set & \centering Data Size & Time Series Length \\
-\hline CinC_ECG_torso & \centering 1380 & 1639 \\
-\hline ECGFiveDays & \centering 861 & 136 \\
-\hline TwoLeadECG & \centering 1139 & 82 \\
-\hline ECG5000 & \centering 4500 & 140 \\
+\begin{tabular}{|c|c|c|c|}
+\hline Data Set & \centering Data Size & Time Series Length & Class Numver\\
+\hline CinC_ECG_torso & \centering 1380 & 1639 & 4\\
+\hline ECGFiveDays & \centering 861 & 136 & 2\\
+\hline TwoLeadECG & \centering 1139 & 82 & 2\\
+\hline ECG5000 & \centering 4500 & 140 & 5\\
 \hline
 \end{tabular}
 \label{Tab:ECGData}
-\end{table}
+\end{table*}
 
 \begin{table*}[t]
 \caption{Clustering Performance on Synthetic ECG Data Set From UCR Time Series Archive}

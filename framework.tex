@@ -4,15 +4,14 @@ In this section, we first propose a framework to analyze the correlation of hete
 
 \subsection{Change Based Correlation Coefficient}
 
-As we introduced in Section. \ref{sec:formulation}, change information is important for calculating the change based correlation method. 
-
-So, Given a time series, the first thing need to do is to extract the change information of the time series. In this work, we regard the change information as bit-stream. In the bit-stream, $1$ denotes there is a change in this sub-series, and $0$ if not.
+The Change Based Correlation Coefficient can be calculated following the framework in Fig. \ref{fig:frame}.
+Given a time series, first, we extract the change information of the time series. 
+In this work, we regard the change information as bit-stream. In the bit-stream, $1$ denotes there is a change in this sub-series, and $0$ if not. We will introduce the change based information in details in the following section.
 
 After obtaining the change information of the time series, we then calculate the Jaccard similarity\cite{han2011data} coefficient between each other.
-// Here need to say something about why.
-
-The Jaccard similarity between each bit-stream will be the correlation coefficient between these two time series. 
-The framework of this correlation is showed in Fig.\ref{fig:frame}.
+As we defined before (Section \ref{sec:formulation}), if two time series often change at the same time, they may have correlation with each other. 
+So, here, how often denotes the value of the correlation. In other words, how many $1$ do two time series both have. This is directly the Jaccard Distance.
+So, the Jaccard similarity between each bit-stream will be the correlation coefficient between these two time series. 
 
 \begin{figure}[t]
 \centering
@@ -24,11 +23,12 @@ The framework of this correlation is showed in Fig.\ref{fig:frame}.
 \subsection{Change Information Extraction}
 \label{ChangeCorrelation}
 
-As we introduced in Section.\ref{sec:formulation}, change based correlation corresponds to the change information of the time series. Change information of a time series is a time period information, not a time point information. As a result, in order to extract the change information of the time series, we need to find the information in small time period of the time series (A sub-series). 
+As we introduced in Section.\ref{sec:formulation}, change based correlation corresponds to the change information of the time series. change information of a time series is a time period information, not a time point information. 
+As a result, in order to extract the change information of the time series, we need to find the information in small time period of the time series (A sub-series). The idea of extracting the change information is showed in Fig.\ref{fig:ChangeMapping}.
 
 Given a time series $S = (s_1,s_2,...,s_m)$, where $m$ is the number of points in the time series. Given a subs-series length $k$. The change information of the time series $S$ can be represented as a bit-stream:
 
-$B_S = \{b_0,b_1,...,b_n\}$, where each $b_i$ corresponds to a sub-series of length $k$ for the original time series $S$ as showed in Fig.\ref{ChangeMapping}.
+$B_S = \{b_0,b_1,...,b_n\}$, where each $b_i$ corresponds to a sub-series of length $k$ for the original time series $S$ as showed in 
 
 Given a sub-series $l^j = \{s_i,s_{i+1},s_{i+2},...,s_{i+k-1}\}$, where $w$ is the length of the sub-series. Then the change information of sub-series $l$ is denoted as follow:
 
@@ -105,14 +105,14 @@ where, $|A \cap B|$ denotes the number of bit that $X$ and $Y$ both $1$. And $|A
 For example, given two bit stream: $X={100111}$, and $Y={001110}$. Then $|A \cap B| = 2$, and $|A \cap B| = 5$, so $J(A,B) = \frac{2}{5} = 0.4$.
 
 
-\subsection{Speed up Top-k Searching using LSH}
+\subsection{Speed up Top-k Search using LSH}
 
 As we introduced before, in the real world problem, the scale of time series data often huge. Mining such huge number of time series is a big challenge.
 
 We can see from the change information that, it is a bit-stream data, so, we can use hashing method to speed up the searching method under change based correlation coefficient.
 
 In this work, we LSH (Locality Sensitive Hashing) \cite{indyk1998approximate} to do fast search.
-// Exaplain the Fast search algorithm here.
+
 
 
 \subsection{Discuss about Sub-series Length w}
