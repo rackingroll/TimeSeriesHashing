@@ -52,7 +52,7 @@ As showed in Equ.\ref{Equ:ChangeInformation}, the change information is the info
 Fig.\ref{fig:ChangeMapping} shows how to extract the change information of the time series.
 
 \subsection{Change Detection}
-
+\label{sec:changeDetect}
 So,the problem here is:
 Given a sub-series 
 
@@ -107,24 +107,28 @@ For example, given two bit stream: $X={100111}$, and $Y={001110}$. Then $|A \cap
 
 \subsection{Speed up Top-k Search using LSH}
 
-As we introduced before, in the real world problem, the scale of time series data often huge. Mining such huge number of time series is a big challenge.
+In many the real world problems, the scale of time series data often huge \cite{rakthanmanon2012searching}. Mining such huge number of time series is a big challenge for us.
 
-We can see from the change information that, it is a bit-stream data, so, we can use hashing method to speed up the searching method under change based correlation coefficient.
+In this work, by taking the advantage of the change based coefficient, we propose to use Locality Sensitive Hashing to do large scale search in time series data.
 
-In this work, we LSH (Locality Sensitive Hashing) \cite{indyk1998approximate} to do fast search.
+The change information of a time series is a bit-stream (Section \ref{sec:changeDetect}). We regard it as the hashing code of the original time series.
 
-
+As ar result, we can directly use LSH (Locality Sensitive Hashing) search algorithm to speed up the searching process. \cite{indyk1998approximate} 
 
 \subsection{Discuss about Sub-series Length w}
 
 In this research, the sub-series length $w$ is a very important parameter.
-If the sub-series length $w$ is too short, then the change information can not be captured. On the other hand, if the sub-series length $w$ is too long, then there will be to much noise information.
+If the sub-series length $w$ is too short, then the change information can not be captured. 
+On the other hand, if the sub-series length $w$ is too long, then there will be too much noise information.
 
-In some cases, the value of $k$ can be selected based on domain knowledge and experiments. However, in most real world situations, there are millions of time series and events, and we do not have enough domain knowledge to pre-select the values of all sub-series lengths. In this research, we use the parameter as our previous research work on Correlating Event with time series \cite{luo2014correlating}.
-This method can auto-select the sub-series length for a time series based on the autocorrelation function \cite{hamilton1994time} of the time series.
+In some cases, the value of $m$ can be selected based on domain knowledge and experiments. In the experiment of this work, all the sub-series length are selected based on the domain knowledge.
+
+However, in most real world situations, there are millions of time series and events, and we do not have enough domain knowledge to pre-select the values of all sub-series lengths. 
+
+In our previous research of Correlating Event with time series \cite{luo2014correlating}, we can auto-select the sub-series length for a time series based on the autocorrelation function \cite{hamilton1994time} of the time series.
 Given a time series $S=(s_1,s_2,...,s_n)$, the autocorrelation is showed as follow:
 
 \begin{equation}
 R(l) = E(s_i*s_{i-l}).
 \end{equation}
-where $l$ denotes the lag of the correlation. The autocorrelation function of a time series can be used to represent the energy of signals in the time series with a period of $l$ \cite{hamilton1994time}. Therefore, our length $k$ can be assigned as the value of the first peak to include the significant signal of the time series. 
+where $l$ denotes the lag of the correlation. The autocorrelation function of a time series can be used to represent the energy of signals in the time series with a period of $l$ \cite{hamilton1994time}. Therefore, our length $m$ can be assigned as the value of the first peak to include the significant signal of the time series. For more detail of this selection method, please refer \cite{luo2014correlating}.

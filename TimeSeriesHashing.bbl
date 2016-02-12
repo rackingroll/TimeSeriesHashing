@@ -8,6 +8,12 @@ L.~Adhianto, S.~Banerjee, M.~Fagan, M.~Krentel, G.~Marin, J.~Mellor-Crummey,
 \newblock {\em Concurrency and Computation: Practice and Experience},
   22(6):685--701, 2010.
 
+\bibitem{basseville1993detection}
+M.~Basseville, I.~V. Nikiforov, et~al.
+\newblock {\em Detection of abrupt changes: theory and application}, volume
+  104.
+\newblock Prentice Hall Englewood Cliffs, 1993.
+
 \bibitem{chen2013contextual}
 X.~C. Chen, K.~Steinhaeuser, S.~Boriah, S.~Chatterjee, and V.~Kumar.
 \newblock Contextual time series change detection.
@@ -39,6 +45,13 @@ J.~Han, M.~Kamber, and J.~Pei.
 \newblock {\em Data mining: concepts and techniques: concepts and techniques}.
 \newblock Elsevier, 2011.
 
+\bibitem{hirano2002mining}
+S.~Hirano and S.~Tsumoto.
+\newblock Mining similar temporal patterns in long time-series data and its
+  application to medicine.
+\newblock In {\em Data Mining, 2002. ICDM 2003. Proceedings. 2002 IEEE
+  International Conference on}, pages 219--226. IEEE, 2002.
+
 \bibitem{holter1961new}
 N.~J. Holter.
 \newblock New method for heart studies continuous electrocardiography of active
@@ -56,6 +69,12 @@ P.~Indyk and R.~Motwani.
 R.~A. Johnson and D.~W. Wichern.
 \newblock {\em Applied multivariate statistical analysis}.
 \newblock Pearson, 2007.
+
+\bibitem{kadambe1992application}
+S.~Kadambe and G.~F. Boudreaux-Bartels.
+\newblock Application of the wavelet transform for pitch detection of speech
+  signals.
+\newblock {\em IEEE Transactions on Information Theory}, 38(2):917--924, 1992.
 
 \bibitem{kendall1938new}
 M.~G. Kendall.
@@ -123,6 +142,14 @@ L.~Rabiner and B.-H. Juang.
 \newblock Fundamentals of speech recognition.
 \newblock 1993.
 
+\bibitem{rakthanmanon2012searching}
+T.~Rakthanmanon, B.~Campana, A.~Mueen, G.~Batista, B.~Westover, Q.~Zhu,
+  J.~Zakaria, and E.~Keogh.
+\newblock Searching and mining trillions of time series subsequences under
+  dynamic time warping.
+\newblock In {\em Proceedings of the 18th ACM SIGKDD international conference
+  on Knowledge discovery and data mining}, pages 262--270. ACM, 2012.
+
 \bibitem{Lehman:SAS:2005}
 B.~Rosner.
 \newblock {\em Fundamentals of biostatistics}.
@@ -155,6 +182,13 @@ D.~Wu, Y.~Ke, J.~X. Yu, S.~Y. Philip, and L.~Chen.
 \newblock Detecting leaders from correlated time series.
 \newblock In {\em Database Systems for Advanced Applications}, pages 352--367.
   Springer, 2010.
+
+\bibitem{yamanishi2002unifying}
+K.~Yamanishi and J.-i. Takeuchi.
+\newblock A unifying framework for detecting outliers and change points from
+  non-stationary time series data.
+\newblock In {\em Proceedings of the eighth ACM SIGKDD international conference
+  on Knowledge discovery and data mining}, pages 676--681. ACM, 2002.
 
 \bibitem{yang2002detecting}
 M.-H. Yang, D.~J. Kriegman, and N.~Ahuja.

@@ -15,48 +15,52 @@ Repeated entry---line 2283 of file TimeSeriesHashing.bib
  : @misc{UCRArchive
  :                 ,
 I'm skipping whatever remains of this entry
+Repeated entry---line 2317 of file TimeSeriesHashing.bib
+ : @book{basseville1993detection
+ :                              ,
+I'm skipping whatever remains of this entry
 Warning--empty journal in nagelkerke1991note
 Warning--empty journal in rabiner1993fundamentals
 Warning--can't use both volume and number fields in tallent2009effective
-You've used 30 entries,
+You've used 35 entries,
             2118 wiz_defined-function locations,
-            668 strings with 8604 characters,
-and the built_in function-call counts, 10820 in all, are:
-= -- 1070
-> -- 500
-< -- 16
-+ -- 202
-- -- 168
-* -- 683
-:= -- 1733
-add.period$ -- 98
-call.type$ -- 30
-change.case$ -- 163
+            697 strings with 9885 characters,
+and the built_in function-call counts, 13026 in all, are:
+= -- 1298
+> -- 600
+< -- 20
++ -- 242
+- -- 202
+* -- 828
+:= -- 2067
+add.period$ -- 116
+call.type$ -- 35
+change.case$ -- 193
 chr.to.int$ -- 0
-cite$ -- 33
-duplicate$ -- 455
-empty$ -- 851
-format.name$ -- 168
-if$ -- 2334
+cite$ -- 38
+duplicate$ -- 547
+empty$ -- 1023
+format.name$ -- 202
+if$ -- 2825
 int.to.chr$ -- 0
-int.to.str$ -- 30
-missing$ -- 39
-newline$ -- 153
-num.names$ -- 60
-pop$ -- 232
+int.to.str$ -- 35
+missing$ -- 45
+newline$ -- 178
+num.names$ -- 70
+pop$ -- 273
 preamble$ -- 1
-purify$ -- 143
+purify$ -- 169
 quote$ -- 0
-skip$ -- 334
+skip$ -- 406
 stack$ -- 0
-substring$ -- 603
-swap$ -- 138
-text.length$ -- 16
+substring$ -- 750
+swap$ -- 174
+text.length$ -- 20
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 100
+type$ -- 118
 warning$ -- 3
-while$ -- 103
-width$ -- 32
-write$ -- 329
-(There were 3 error messages)
+while$ -- 124
+width$ -- 37
+write$ -- 387
+(There were 4 error messages)

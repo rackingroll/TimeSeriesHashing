@@ -17,19 +17,14 @@
 \end{figure}
 
 Time series correlation is a major research topic in data mining area. 
-Such correlating techniques has been applied in many real world problems.
+Such correlating techniques have been applied to many real-world problems.
 For example, some researchers use time series correlation techniques to analysis the signal information for speech processing \cite{rabiner1993fundamentals}.
 Image processing researchers also use time series correlation techniques to deal with the image retrieval problems and object detection problems \cite{yang2002detecting, sonka2014image}.
 In the system diagnose area\cite{luo2014correlating,sun2014querying}, time series correlation techniques also widely used to mine the system behavior and diagnose system failures. 
 Time series correlation techniques can also be used for analyzing bio-sequences (e.g DNA Sequence, etc \cite{mount2001bioinformatics} etc. 
 
-However, in most real world problems, time series data often have different patterns (Heterogeneous time series). For example, in the area of system analysis area. 
-Each performance counter can be regarded as a time series (e.g. CPU Usage, Memory Usage, etc.).
-Some of the time series may be a periodical time series, but others may be a linear or random patterns. 
-However, heterogeneous time series may also be correlations between each other. 
-So, how to calculate the correlation between heterogeneous time series data is a challenge. 
-%In addition, real world time series are all high dimensional and large scale data, how to mining such huge amount of data set is also a challenge for us.
-
+However, in most real-world problems, time series data often have different patterns (e.g. Periodical, Linear, random, etc.).  And the correlation between these heterogeneous time series is also very meaningful.
+Despite their importance, there has been little previous work addressing the correlation between two types of heterogeneous time series data. We provide two motivating example as bellow:
 
 \textbf{Analysis of ECG (Electrocardiogram) data}
 
@@ -38,9 +33,10 @@ is the process of recording the electrical activity of the heart over a period o
 These electrodes detect the tiny electrical changes on the skin that arise from the heart muscle depolarizing during each heartbeat. 
 By analyzing such data, one can find some useful information hidden behind the human body, thus to uncover some miracle of human body \cite{tilley1979essentials}.
 
-Such ECG data can be regarded as time series data. Detect the correlation between each ECG time series is a powerful tool to analyze ECG data. After knowing the correlation between different ECG data, we can use such correlation to discover the hidden relation ship between each human and disease \cite{marriott1988practical}.
+Such ECG data can be regarded as time series data. Detect the correlation between each ECG time series can provide useful information for analyzing ECG data. 
+After knowing the correlation between different ECG data, one can use such correlation result to find the hidden relationship between each human and diseases \cite{marriott1988practical}.
 
-However, we can see from Fig.\ref{fig:ecgexample} that, ECG time series data correlation are regarded as tiny electrical change at the same time \cite{tilley1979essentials}. And the change has different patterns. As a result, some classical similarity or correlation method can not deal with such problem well, even DTW some times also fail to detect such patterns. As a result, a change based correlation is needed.
+However, we can see from Fig.\ref{fig:ecgexample} that, ECG time series data correlation are regarded as tiny electrical change at the same time \cite{tilley1979essentials}. And the change has different patterns. As a result, some classical similarity or correlation method can not deal with such problem well, even DTW sometimes also fail to detect such patterns. As a result, a change based correlation is needed.
 
 
 \textbf{Thread Behavior Mining in High Performance Computer.}
@@ -49,37 +45,30 @@ High performance computers (HPC) have become enormously complex. Today, the larg
 As a result, it is increasingly difficult for application developers writing complex scientific programs to attain a significant fraction of peak performance on modern microprocessor-based computer systems. 
 So, how to automatically analysis and monitoring the HPC is a major task for HPC researchers \cite{mccurdy2010memphis,tallent2009effective}.
 
-HPCToolkit\footnote{http://hpctoolkit.org/}, introduced by Dr.John Mellor-Crummey, can generate some performance information of each process (or thread if application is multithreaded.) along the time. So, each process (thread) can be represented as a time series. (Depend on which aspect of a thread to be represent, domain knowledge required) The thread change information (e.g. change from one state to another state) can directly reflect some important properties of different threads. 
+HPCToolkit\footnote{http://hpctoolkit.org/}, introduced by Dr.John Mellor-Crummey, can generate some performance information of each process (or thread if the application is multithreaded.) along the time. So, each process (thread) can be represented as a time series (Depend on which aspect of a thread to be represented, domain knowledge required). The thread change information (e.g. change from one state to another state) can directly reflect some important properties of different threads. 
 
-Fig. \ref{fig:hpcexample} shows a example of three thread time series data. From the figure, we can see that above two thread often change at same time, so they may have highly correlation with each other. However, using the point to point based similarity method, we can not handle such heterogeneity property of different thread time series.
+Fig. \ref{fig:hpcexample} shows an example of three thread time series data. From the figure, we can see that above two thread often change at the same time, so they may have a high correlation between each other. However, using the point to point based similarity method (e.g. DTW, Pearson, etc.), we can not handle such heterogeneity property of different thread time series.
 
+As showed in above examples, most of the existing point to point time series similarity measures (e.g. L1-Distance, L2-Distance \cite{han2011data}, and DTW-Distance \cite{muller2007dynamic}, etc) or correlation measures (e.g. Pearson Correlation \cite{pearson1904mathematical}, Kendall rank correlation \cite{kendall1938new}, and Spearman's rank correlation \cite{pirie1988spearman}, etc.) can not deal with such heterogeneous properties of the time series. 
+The reason is: for heterogeneous time series, the correlation information is often associated with the change (During a period of time) of time series, rather than a point-to-point relationship in the traditional correlation analysis techniques. We will introduce the related research of point to point based similarity measure in detail in Section \ref{sec:relatedwork}.
 
-As showed in above examples, most of the existing time series similarity measures (e.g. L1-Distance, L2-Distance \cite{han2011data}, and DTW-Distance \cite{muller2007dynamic}, etc) or correlation measures (e.g. Pearson Correlation \cite{pearson1904mathematical}, Kendall rank correlation \cite{kendall1938new}, and Spearman's rank correlation \cite{pirie1988spearman}, etc.) can not deal with such heterogeneous properties of the time series. 
-Because of that, for heterogeneous time series correlating, the correlation information is often associated with the change of time series during a time period rather than a point-to-point corresponding relationship in the traditional correlation analysis techniques. 
-And the existing similarity and correlation measures only consider the point to point similarity or correlation between different time series.
-%In this paper, we will introduce the related research in detail in Section \ref{sec:relatedwork}.
-As a result, In order to deal with heterogeneity properties of time series with different patterns. 
-We proposed a change based correlation coefficient. 
+As a result, in order to deal with heterogeneity properties of time series, we proposed a change based correlation coefficient. 
 The intuition of this correlation is: 
+\textbf{\textit{If two time series often change at the same time, they may have correlation with each other.} }. The mathematical definition of change based correlation is introduced in section \ref{sec:formulation}. 
 
-\textit{If two time series often change at the same time, they may have correlation with each other.} 
-
-The detailed definition will be introduced in section \ref{sec:formulation}. 
 Our change based correlation method firstly extract the change information of the time series data, and then use the change information to calculate the correlation coefficient between the two time series.
-We also use the hashing methods speed up the correlation calculation between time series, as well as searching and clustering. 
-So the computational cost of our coefficient is low, thus our method can also deal with the large scale property of the time series data.
+By taking the advantage of this correlation coefficient, we propose to use LSH method to dealing with very large top-k searching problems.
 
 The contribution of this paper is listed as follow:
 \begin{enumerate}
 \item Motivated by real applications, we investigate the correlation
-problem as between heterogeneous time series (Time Series with different patterns).
+problem as between heterogeneous time series .
 To the best of our knowledge, this is the first attempt
 to evaluate the correlation between time series with different patterns.
 
-\item We proposed a correlation coefficient between heterogeneous time series, and 
-use hashing method to speed up the calculating of the coefficient between time series, as well as the clustering and nearest neighbors search tasks.
+\item We proposed a correlation coefficient between heterogeneous time series. By taking the advantage of this correlation coefficient, we propose to use LSH method to dealing with very large top-k searching problems.
 
-\item The experiments on Synthetic data show the effectiveness and efficiency of our method.
+\item The experiments on Synthetic data sets and Real world data sets show the effectiveness and efficiency of our method.
 \end{enumerate}
 
 The rest of the paper is organized as follows: In Section 2, we introduce the problem
