@@ -85,32 +85,40 @@ We can see that DTW and Euclidean distance can not perform well. Because \textbf
 
 On the other hand, change based correlation only consider the change information of the time series, and state difference between \textbf{Thread \#1}, and \textbf{Thread \#2} can not effect the correlation result.
 
+As showed in above motivating examples, most of the existing time series similarity measures (e.g. L1-Distance, L2-Distance \cite{han2011data}, and DTW-Distance \cite{muller2007dynamic}, etc) or correlation measures (e.g. Pearson Correlation \cite{pearson1904mathematical}, Kendall rank correlation \cite{kendall1938new}, and Spearman's rank correlation \cite{pirie1988spearman}, etc.) can not deal with such heterogeneous properties of the time series: The change pattern differences between ECG time series and state different between thread time series.
+
+The reason is: the correlation between heterogeneous time series is often associated with the change during a time period rather than a point-to-point corresponding relationship.
+And the existing similarity and correlation measures only consider the point to point similarity or correlation between different time series.
+%In this paper, we will introduce the related research in detail in Section \ref{sec:relatedwork}.
+As a result, In order to deal with heterogeneity properties of time series with different patterns.
+We proposed a change based correlation coefficient.
+The intuition of this correlation is:
+
+
 %However, in most real world problems, time series data often have different patterns (Heterogeneous time series). For example, in the area of system analysis area.
 %Each performance counter can be regarded as a time series (e.g. CPU Usage, Memory Usage, etc.).
 %Some of the time series may be a periodical time series, but others may be a linear or random patterns.
 %However, heterogeneous time series may also be correlations between each other.
 %So, how to calculate the correlation between heterogeneous time series data is a challenge.
 
-As showed in above examples, most of the existing point to point time series similarity measures (e.g. L1-Distance, L2-Distance \cite{han2011data}, and DTW-Distance \cite{muller2007dynamic}, etc) or correlation measures (e.g. Pearson Correlation \cite{pearson1904mathematical}, Kendall rank correlation \cite{kendall1938new}, and Spearman's rank correlation \cite{pirie1988spearman}, etc.) can not deal with such heterogeneous properties of the time series. 
-The reason is: for heterogeneous time series, the correlation information is often associated with the change (During a period of time) of time series, rather than a point-to-point relationship in the traditional correlation analysis techniques. We will introduce the related research of point to point based similarity measure in detail in Section \ref{sec:relatedwork}.
+\textit{If two time series often change at the same time, they may have correlation with each other.}
 
-As a result, in order to deal with heterogeneity properties of time series, we proposed a change based correlation coefficient. 
-The intuition of this correlation is: 
-\textbf{\textit{If two time series often change at the same time, they may have correlation with each other.} }. The mathematical definition of change based correlation is introduced in section \ref{sec:formulation}. 
-
+The detailed definition will be introduced in section \ref{sec:formulation}.
 Our change based correlation method firstly extract the change information of the time series data, and then use the change information to calculate the correlation coefficient between the two time series.
-By taking the advantage of this correlation coefficient, we propose to use LSH method to dealing with very large top-k searching problems.
+We also use the hashing methods speed up the correlation calculation between time series, as well as searching and clustering.
+So the computational cost of our coefficient is low, thus our method can also deal with the large scale property of the time series data.
 
 The contribution of this paper is listed as follow:
 \begin{enumerate}
 \item Motivated by real applications, we investigate the correlation
-problem as between heterogeneous time series .
+problem as between heterogeneous time series (Time Series with different patterns).
 To the best of our knowledge, this is the first attempt
 to evaluate the correlation between time series with different patterns.
 
-\item We proposed a correlation coefficient between heterogeneous time series. By taking the advantage of this correlation coefficient, we propose to use LSH method to dealing with very large top-k searching problems.
+\item We proposed a correlation coefficient between heterogeneous time series, and
+use hashing method to speed up the calculating of the coefficient between time series, as well as the clustering and nearest neighbors search tasks.
 
-\item The experiments on Synthetic data sets and Real world data sets show the effectiveness and efficiency of our method.
+\item The experiments on Synthetic data show the effectiveness and efficiency of our method.
 \end{enumerate}
 
 The rest of the paper is organized as follows: In Section 2, we introduce the problem
