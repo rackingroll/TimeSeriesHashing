@@ -14,10 +14,21 @@ M.~Basseville, I.~V. Nikiforov, et~al.
   104.
 \newblock Prentice Hall Englewood Cliffs, 1993.
 
+\bibitem{caracca2000discovering}
+J.~P. Cara{\c{c}}a-Valente and I.~L{\'o}pez-Chavarr{\'\i}as.
+\newblock Discovering similar patterns in time series.
+\newblock In {\em Proceedings of the sixth ACM SIGKDD international conference
+  on Knowledge discovery and data mining}, pages 497--505. ACM, 2000.
+
 \bibitem{chen2013contextual}
 X.~C. Chen, K.~Steinhaeuser, S.~Boriah, S.~Chatterjee, and V.~Kumar.
 \newblock Contextual time series change detection.
 \newblock In {\em SDM}, pages 503--511. SIAM, 2013.
+
+\bibitem{chen2013dtw}
+Y.~Chen, B.~Hu, E.~Keogh, and G.~E. Batista.
+\newblock Dtw-d: time series semi-supervised learning from a single example.
+\newblock In {\em KDD}, pages 383--391. ACM, 2013.
 
 \bibitem{UCRArchive}
 Y.~Chen, E.~Keogh, B.~Hu, N.~Begum, A.~Bagnall, A.~Mueen, and G.~Batista.
@@ -28,6 +39,11 @@ Y.~Chen, E.~Keogh, B.~Hu, N.~Begum, A.~Bagnall, A.~Mueen, and G.~Batista.
 J.~Cohen.
 \newblock Statistical power analysis for the behavioral sciences.
 \newblock 1988.
+
+\bibitem{granger2014forecasting}
+C.~W.~J. Granger and P.~Newbold.
+\newblock {\em Forecasting economic time series}.
+\newblock Academic Press, 2014.
 
 \bibitem{gretton2006kernel}
 A.~Gretton, K.~M. Borgwardt, M.~Rasch, B.~Sch{\"o}lkopf, and A.~J. Smola.
@@ -110,15 +126,21 @@ D.~S. Moore.
 \newblock {\em The basic practice of statistics}, volume~2.
 \newblock WH Freeman New York, 2007.
 
-\bibitem{mount2001bioinformatics}
-D.~W. Mount and D.~W. Mount.
-\newblock {\em Bioinformatics: sequence and genome analysis}, volume~2.
-\newblock Cold spring harbor laboratory press New York:, 2001.
+\bibitem{mudelsee2013climate}
+M.~Mudelsee.
+\newblock {\em Climate time series analysis}.
+\newblock Springer, 2013.
 
 \bibitem{muller2007dynamic}
 M.~M{\"u}ller.
 \newblock Dynamic time warping.
 \newblock {\em Information retrieval for music and motion}, pages 69--84, 2007.
+
+\bibitem{oates2000method}
+T.~Oates, M.~D. Schmill, and P.~R. Cohen.
+\newblock A method for clustering the experiences of a mobile robot that
+  accords with human judgments.
+\newblock In {\em AAAI/IAAI}, pages 846--851, 2000.
 
 \bibitem{pearson1904mathematical}
 K.~Pearson.

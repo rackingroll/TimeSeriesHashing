@@ -1,53 +1,55 @@
 \section{Introduction}
 \label{sec:introduction}
 
-\begin{figure*}[t]
+\begin{figure}[t]
 \centering
-\subfigure{%
-\includegraphics[width=0.30\textwidth]{ECGExChangeCorrelation.eps}
-}\hspace{0.001em}
-\subfigure{%
-\includegraphics[width=0.30\textwidth]{ECGExDTW.eps}
-}\hspace{0.001em}
-\subfigure{%
-\includegraphics[width=0.30\textwidth]{ECGExED.eps}
-}\hspace{0.001em}
+\includegraphics[width=0.5\textwidth]{ECGExp.eps}
 \caption{ Three ECG time series with two labels }
 \label{fig:ecgexample}
-\end{figure*}
+\end{figure}
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.45\textwidth]{HPCExample.pdf}
+\includegraphics[width=0.50\textwidth]{HPCExample.pdf}
 \caption{Three Thread time series}
 \label{fig:hpcexample}
 \end{figure}
 
-The focus of this paper will be on the time series data. A time series is defined as a sequence of values $\{\}$ associated with timestamps $ $.
+The focus of this paper will be on the time series data. A time series is defined as a sequence of values $\{s_1,s_2,...,s_m\}$
+associated with timestamps $\{t(s_1), t(s_2),..., t(s_m)\}$, which has the relationship of $t(s_i) = t(s_{i-1})+\tau$, where $\tau$is the sampling interval, and $m$ is the number of points in the time series.
 
-Time series mining is ubiquitous in data driven applications including robotics, medicine~\cite{}, speech~\cite{rabiner1993fundamentals}, object detection in vision~\cite{yang2002detecting, sonka2014image}, system failure diagnosis~\cite{luo2014correlating,sun2014querying}, ... more from the paper.  Due to its pervasive presence, time series mining have received significant attention in recent years. A common prerequisite for data mining algorithms, such as clustering, search, classification and regression, etc., is a measure of correlation (or similarity). Dynamic Time Warping (DTW) is widely accepted, and arguably the most popular, measure of similarity (or correlation) for time series data in general~\cite{}.
+Time series mining is ubiquitous in data driven applications including robotics, medicine~\cite{oates2000method,caracca2000discovering}, speech~\cite{rabiner1993fundamentals}, object detection in vision~\cite{yang2002detecting, sonka2014image}, system failure diagnosis~\cite{luo2014correlating,sun2014querying}, Earth Science \cite{mudelsee2013climate}, Finance \cite{granger2014forecasting}, etc.
 
-All existing measures over time series, including the popular DTW, relies on the notion that two time series $T_1$ and $T_2$ are similar, if there is a long enough similarly behaving subsequence common between them. This is a very reasonable notion which is also the desired nature of the similarity function in many applications.  However, there are plenty of real-world problems where the notions of similarity can be very different. Using existing similarity measures, such as DTW, for such problems often lead to misleading results. Despite their importance, there has been little previous work addressing those scenarios. To signify their importance, we provide two motivating real-world examples:
+Due to its pervasive presence, time series mining have received significant attention in recent years. A common prerequisite for data mining algorithms, such as clustering, search, classification and regression, etc., is a measure of correlation (or similarity). Dynamic Time Warping (DTW) is widely accepted, and arguably the most popular, measure of similarity (or correlation) for time series data in general~\cite{rakthanmanon2012searching, muller2007dynamic, chen2013dtw}.
+
+All existing measures over time series, including the popular DTW, relies on the notion that two time series $S_1$ and $S_2$ are similar, if there is a long enough similarly behaving subsequence common between them. This is a very reasonable notion which is also the desired nature of the similarity function in many applications.  However, there are plenty of real-world problems where the notions of similarity can be very different. Using existing similarity measures, such as DTW or Euclidean distance, for such problems often lead to misleading results. Despite their importance, there has been little previous work addressing those scenarios. To signify their importance, we provide two motivating real-world examples:
+
+
+{\bf \color{red} MOTIVATING EXAMPLE NEED MODIFY}
 
 \textbf{Analysis of ECG (Electrocardiogram) data}
 
 Electrocardiography \cite{holter1961new} (ECG or EKG*)
 is the process of recording the electrical activity of the heart over a period of time using electrodes placed on a patient's body.
 These electrodes detect the tiny electrical changes on the skin that arise from the heart muscle depolarizing during each heartbeat.
-If two ECG often have tiny electrical changes at the same time, they can be regarded as correlated.\cite{marriott1988practical}.
-By analyzing such data, one can find some useful information hidden behind the human body, thus to uncover some miracles of human body \cite{tilley1979essentials}.
+The tiny electrical changes occurs in different rhythm corresponds to different heart physical states. If two ECG often have tiny electrical changes at the same time, they can be represent correlation between the corresponding body (e.g. same disease or same heart physical state, etc).\cite{marriott1988practical}.
 
-%The first real-world example is ECG data\cite{holter1961new}. 
-We take the ECG time series data from the UCR time series data Archive \cite{UCRArchive}, and the label is also provided by them.
-We choose three time series from two different labels in that data set.
-We illustrate this in Figure\ref{fig:ecgexample}, where we show the hierarchical clustering of these three time series under various measures. 
-Top two red bold time series ($ECG\#1,ECG\#2$) are labeled as same class, and $ECG \#3$ is labeled as other class.
+Fig. \ref{fig:ecgexample} shows three ECG time series, the above two blue time series (ECG1 and ECG2) have the same label (May comes from the same human or caused by the same heart disease), and the red one has different label. We take the ECG time series data from the UCR time series data Archive \cite{UCRArchive}, and the label is also provided by them.
 
-As we can see from Fig.\ref{fig:ecgexample}, Euclidean Distance and DTW Distance does poorly here. 
-This is not surprising, since the ECG time series data have different change patterns (e.g. Increase-Decrease, Decrease-Increase, or a Sudden wave, etc.). These different change patterns can effect the performance of point to point similarity measures.
-And the correlation of ECG time series is major focus on whether have tiny electrical change at the same time \cite{tilley1979essentials}.
+By using DTW distance, DTW distance between ECG1 and ECG2 is $0.5$, while the distance between ECG2 and ECG3 is $0.3$.
+It is not surprising that using DTW for such problems lead to misleading results.
+This because that the similarity of ECG time series data correspond to the change rhythm, not correspond to the point to point similarity.
+Since the ECG time series data have different change patterns (e.g. Increase-Decrease, Decrease-Increase, or a Sudden wave, etc.). These different change patterns can effect the performance of point to point similarity measures.
 
-{\bf \color{red} Clear mention, where the data comes from, what are the labels (categories whyc you colored blue and red). And what is the value of the pairwise similarity between those 3 examples with DTW, our measure and L2 distance. Argue why DTW and L2 does not lead to the required ordering. Explain in details and we will condense it later. Right now its handwavy and wont work.}
+On the other hand, By using the similarity in this work, the correlation between ECG1 and ECG2 is $1.00$, and the similarity between ECG1 and ECG3 is $0.25$, which is the result exactly what we need.
+
+%
+
+%We choose three time series from two different labels in that data set.
+%We illustrate this in Figure\ref{fig:ecgexample}, where we show the hierarchical clustering of these three time series under various measures. 
+%Top two red bold time series ($ECG\#1,ECG\#2$) are labeled as same class, and $ECG \#3$ is labeled as other class.
+
+
 
 
 %correlation is a major research topic in data mining area.
@@ -58,6 +60,8 @@ And the correlation of ECG time series is major focus on whether have tiny elect
 %Time series correlation techniques can also be used for analyzing bio-sequences (e.g DNA Sequence, etc \cite{mount2001bioinformatics} etc.
 
 %In addition, real world time series are all high dimensional and large scale data, how to mining such huge amount of data set is also a challenge for us.
+%By analyzing such data, one can find some useful information hidden behind the human body, thus to uncover some miracles of human body \cite{tilley1979essentials}.
+%The first real-world example is ECG data\cite{holter1961new}. 
 
 \textbf{Analysis of HPC Thread time series.}
 High-performance computers (HPC) have become enormously complex. Today, the largest systems consist of more than tens of thousands of nodes. Nodes themselves are equipped with one or more multicore microprocessors\cite{adhianto2010hpctoolkit}. 
@@ -91,13 +95,10 @@ On the other hand, change based correlation only consider the change information
 %However, heterogeneous time series may also be correlations between each other.
 %So, how to calculate the correlation between heterogeneous time series data is a challenge.
 
-As showed in above examples, most of the existing point to point time series similarity measures (e.g. L1-Distance, L2-Distance \cite{han2011data}, and DTW-Distance \cite{muller2007dynamic}, etc) or correlation measures (e.g. Pearson Correlation \cite{pearson1904mathematical}, Kendall rank correlation \cite{kendall1938new}, and Spearman's rank correlation \cite{pirie1988spearman}, etc.) can not deal with such heterogeneous properties of the time series. 
+As showed in above examples, the existing point to point time series similarity measures (e.g. L1-Distance, L2-Distance \cite{han2011data}, and DTW-Distance \cite{muller2007dynamic}, etc) or correlation measures (e.g. Pearson Correlation \cite{pearson1904mathematical}, Kendall rank correlation \cite{kendall1938new}, and Spearman's rank correlation \cite{pirie1988spearman}, etc.) can not deal with time series similarity problem when time series have heterogeneous patterns. 
 The reason is: for heterogeneous time series, the correlation information is often associated with the change (During a period of time) of time series, rather than a point-to-point relationship in the traditional correlation analysis techniques. We will introduce the related research of point to point based similarity measure in detail in Section \ref{sec:relatedwork}.
 
-As a result, in order to deal with heterogeneity properties of time series, we proposed a change based correlation coefficient. 
-The intuition of this correlation is: 
-\textbf{\textit{If two time series often change at the same time, they may have correlation with each other.} }. The mathematical definition of change based correlation is introduced in section \ref{sec:formulation}. 
-
+As a result, in order to deal with heterogeneity properties of time series, we proposed a change based similarity measure. 
 Our change based correlation method firstly extract the change information of the time series data, and then use the change information to calculate the correlation coefficient between the two time series.
 By taking the advantage of this correlation coefficient, we propose to use LSH method to dealing with very large top-k searching problems.
 
