@@ -1,9 +1,8 @@
 \section{Background}
 \label{sec:formulation}
+In this section, we formally define some concept of this work, including Time Series, Change Point, Change Point set, Time Series Correlation.
 
 \subsection{Preliminary Definition}
-
-In this section, we formally define some concept of this work, including Time Series, Change Point, Change Point set, Time Series Correlation.
 
 \begin{definition}[Time Series]
 A time series, denoted as $S = (s_1,s_2,...,s_m)$, where $m$ is the number of points in the time series. The timestamps of a time series, denoted as $TS = (t(s1), t(s2),..., t(sn))$, have the relationship of $t(s_i) = t(s_{i-1})+\tau$, where $\tau$is the sampling interval.
@@ -25,24 +24,42 @@ $C_X=(t_x(1),t_x(2),...,t_x(p))$
 Where $t_x(i)$ denotes the change points of time series S.
 \end{definition}
 
+In most real world time series mining problems, the latency of a change in the time series is ubiquitous.
+For example, in a High-performance computer, a thread change of one stage may take some time to causal the other correlated state. And also for the ECG time series, the same disease may have slightly different latency in different bodies.
+
+As a result, in this work, we allow the tiny difference between time stamps and define the soft equality of two time-stamps as follow:
+
+\begin{definition}
+	Given two time stamp $t_1$ and $t_2$, then $t_1 = t_2$ if and only if:
+	\begin{equation}
+	t_1 - t_2 < \sigma
+	\end{equation}
+	where, $\sigma$ is a small time interval, and the value of $\sigma$ depends on the real world problems.
+\end{definition}
 
 \subsection{Change based Time Series Correlation}
 
-The intuition of this correlation is: 
-\textbf{\textit{If two time series often change at the same time, they may have correlation with each other.} }. The mathematical definition of change based correlation is introduced in section \ref{sec:formulation}. 
+As we mentioned before, in this work, we focus on using the change information to evaluate the correlation between two time-series. 
+Before we formally define the change based correlation, we provide two intuitions of how two time-series can be correlated based on the change:
 
-After define the time series, we define the correlation of this work as follow:
+\begin{itemize}
+	\item If two time-series often change at the similar time, then they may correlate with each other. 
+	For example, the ECG time series showed in Fig. 1. 
+	ECG4 and ECG5 are corresponding to the same disease, so they are regarded correlated. On the other hand, ECG4 and ECG5 both have two electronic changes. And, from Fig. 1 we can see that the first change of each time series happens at the similar time, and the second change of each time series also happens at the similar time. So, they always have electronic changes at the similar time.
+	\item How often does two time-series change at similar time denotes whether they are highly correlated or weakly correlated? In other words, if most of the time when one time-series changes, the other time series also changes, they may have a high correlation with each other. On the other hand, if just a few times that two time-series both changes, they may have a weak correlation.
+	For example, in Fig.2, we can see that the threads in the same program change state all at the same time, this denotes that the threads within the same program are highly correlated. On the other hand, the thread from different programs changes states not always at the same time. This means threads from different programs may have weak correlation with each other.
+\end{itemize}
+
+Based on the two intuitions above, we define the correlation of this work as follow:
 \begin{definition}[Change Based Correlation] 
-Suppose we have two time series: $X_1=(x_1,x_2,...,x_m),Y_1=(y_1,y_2,...,y_m)$, The change point set of X and Y are denoted as: 
+Suppose we have two time series: $X=(x_1,x_2,...,x_m),Y=(y_1,y_2,...,y_m)$, The change point set of X and Y are denoted as: 
 $C_X=(t_x(1),t_x(2),...,t_x(p))$
 $C_Y=(t_y(1),t_y(2),...,t_y(q))$
 where $q$ and $p$ are numbers of change points for time series $X$ and $Y$.
-Then if $X$ and $Y$ are correlated if and only if:
+Then, the change based correlation coefficient is defined as the Jaccard distance \cite{han2011data} between $C_X$ and $C_Y$.
+
 \begin{equation}
-\left\{\begin{matrix}
-p=q\\ 
-L1(C_X,C_Y)<\xi 
-\end{matrix}\right.
+\rho(X,Y)^{ChangeCorrelation} = J(C_X,C_Y)=\frac{|C_X \cap C_Y|}{|C_X \cup C_Y|}
 \end{equation}
-where $L1(C_X,C_Y)$ denotes the L1 distance, and $\xi$ is the threshold of Time series correlation.
+
 \end{definition}

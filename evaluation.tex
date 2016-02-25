@@ -329,6 +329,7 @@ The precision recall curve for the HPC Thread TIme Series data is showed in Figu
 \hline Data Set & \centering Data Size & Time Series Length \\
 \hline Single PC & \centering 24 & 4096 \\
 \hline MADNESS & \centering 264 & 32768 \\
+\hline Environment Simulation & \centering 312 & 16384 \\
 \hline
 \end{tabular}
 \label{Tab:HPCData}
@@ -353,6 +354,11 @@ Dataset & Measure & Proposed & $L1$ & $L2$ & DTW & Pearson & Kendall & Spearman 
 \cline{2-9}
      & NMI & $\boldsymbol{.861\pm.030}$ & $.853\pm.062$ & $.857\pm.043$ & $.864\pm.036$ & $.346\pm.084$ & $.404\pm.423$ & $.230\pm.442$ \\
 \toprule[1.2pt] 
+\multirow{2}*{\centering{Simulation}}
+     & Accuracy & $\boldsymbol{.921\pm.021}$ & $.802\pm.026$ & $.420\pm.032$ & $.435\pm.012$ & $.857\pm.018$ & $.464\pm.067$ & $.531\pm.067$ \\
+\cline{2-9}
+     & NMI & $\boldsymbol{.831\pm.030}$ & $.803\pm.062$ & $.537\pm.043$ & $.504\pm.036$ & $.786\pm.084$ & $.202\pm.423$ & $.330\pm.442$ \\
+\toprule[1.2pt] 
 \end{tabular}
 \label{Tab:HPCClus}
 \end{table*}
@@ -365,9 +371,13 @@ Dataset & Measure & Proposed & $L1$ & $L2$ & DTW & Pearson & Kendall & Spearman 
 \subfigure{%
 \includegraphics[width=0.45\textwidth]{PRCMADNESS.eps}
 }\hspace{0.001em}
+\subfigure{%
+\includegraphics[width=0.45\textwidth]{PRCEnvironment.eps}
+}\hspace{0.001em}
 \caption{Precision Recall Curve (higher is better). We compare Change based correlation coefficient with other methods.}
 \label{fig:HPCPRC}
 \end{figure}
+
 
 
 
