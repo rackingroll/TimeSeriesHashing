@@ -32,7 +32,7 @@ Electrocardiography \cite{holter1961new} (ECG or EKG*) generates time series dat
 
 %,
 
-As an illustration, Fig. \ref{fig:ecgexample} shows five ECG time series from a real data ({\bf Give description}). These five ECG comes from three different diseases denoted by color green, blue and red.  The DTW distance between ECG1 and ECG2 is $0.2$, while the distance between ECG2 and ECG3 is $0.5$. This is clearly not correct. Time series corresponding to same disease, for this ECG data, should have closer distance compared to time series corresponding to different diseases. 
+As an illustration, Fig. \ref{fig:ecgexample} shows five ECG time series from a real data (Provided by UCR time series Archive \cite{UCRArchive}). These five ECG comes from three different diseases denoted by color green, blue and red.  The DTW distance between ECG1 and ECG2 is $0.2$, while the distance between ECG2 and ECG3 is $0.5$. This is clearly not correct. Time series corresponding to same disease, for this ECG data, should have closer distance compared to time series corresponding to different diseases. 
 
 It is not surprising that we should not use the traditional measure of similarity for this task. This because that the similarity of ECG time series data correspond to the change rhythm, not correspond to the point to point similarity as evident from the Figure~\ref{fig:ecgexample}.
 Since the ECG time series data have different change patterns (e.g. Increase-Decrease, Decrease-Increase, or a Sudden wave, etc.). These different change patterns can effect the performance of point to point similarity measures.
@@ -70,17 +70,21 @@ Information from each thread can be represented as a time series. The value of t
 
 %(Depend on which aspect of a thread to be represent, domain knowledge required) The thread change information (e.g. change from one state to another state) can directly reflect some important properties of different threads.
 
-Fig. \ref{fig:hpcexample} shows a example of nine thread time series data coming from {\bf where does it come from}. Different colors means different call path state. Here, \textbf{Thread0} to \textbf{Thread3} belongs to a Ocean Simulation Program, and \textbf{Thread4} to \textbf{Thread8} belongs to a Weather Simulation Program. Different Color in each thread denotes the ``Call Path" state.
+Fig. \ref{fig:hpcexample} shows a example of nine threads coming from an Environment simulation task. Here, Thread0 to Thread3 belongs to a Ocean Simulation Program, and Thread4 to Thread8 belongs to a Weather Simulation Program. Different Color in each thread denotes the ``Call Path" state.
 
-It is obvious that threads from the same program are highly correlated. This correlation can be detected by the existing method such as Pearson correlation or DTW distance. For example, the DTW distance between Thread 0 and Thread 1 is $0.05$, which denotes they are highly correlated.
+In this simulation task, the Ocean Simulation Program and the Weather Simulation Program are two correlated programs.
+These two programs need to exchange data during the environment simulation task executing. 
+And once they communicate and exchange data with each other, their call path state will also change (As showed in Fig.\ref{fig:hpcexample}).
 
-However, for the Environment Simulation Task, Ocean simulation Program and Weather Simulation Program are also correlated with each other. Because in the real world, the weather earth are correlated with the activities of the ocean.  So these two programs often change data during simulating, when they change data, they will change state at the same time.
+The DTW distance between Thread0 and Thread 4 is $0.8$, which means they have large distance and does not correlate with each other. This is obvious contradict with the ground truth that they are correlated.
 
-And this type of correlation (Threads Correlation between Different Programs) can not be detected using DTW distance. For example, the DTW distance between Thread 0 and Thread 4 is $0.8$. While using our method, we can find a $0.6$ correlation coefficient with each other.
+It is obvious that the correlation between these two programs can not be detected using DTW distance. Because threads in the different program always have different states and point to point similarity measures (DTW, etc.) will regard these state difference as large distance.
 
-We can see that DTW and Euclidean distance can not perform well. Because threads in the different program always have different states and DTW and Euclidean will regard these state difference as large distance.
-On the other hand, change based correlation only consider the change information of the time series, and the state difference between different threads of each program can not bias the correlation result.
+On the other hand, by using our method, we can find a $0.6$ correlation coefficient with each other. This result clearly agrees with the ground truth that these two programs correlated.
 
+%It is obvious that threads from the same program are highly correlated. This correlation can be detected by the existing method such as Pearson correlation or DTW distance. For example, the DTW distance between Thread 0 and Thread 1 is $0.05$, which denotes they are highly correlated.
+
+%However, for the Environment Simulation Task, Ocean simulation Program and Weather Simulation Program are also correlated with each other. Because in the real world, the weather earth are correlated with the activities of the ocean.  So these two programs often change data during simulating, when they change data, they will change state at the same time.
 
 %However, in most real world problems, time series data often have different patterns (Heterogeneous time series). For example, in the area of system analysis area.
 %Each performance counter can be regarded as a time series (e.g. CPU Usage, Memory Usage, etc.).
@@ -89,23 +93,24 @@ On the other hand, change based correlation only consider the change information
 %So, how to calculate the correlation between heterogeneous time series data is a challenge.
 
 As showed in above examples, the existing point to point time series similarity measures (e.g. L1-Distance, L2-Distance \cite{han2011data}, and DTW-Distance \cite{muller2007dynamic}, etc) or correlation measures (e.g. Pearson Correlation \cite{pearson1904mathematical}, Kendall rank correlation \cite{kendall1938new}, and Spearman's rank correlation \cite{pirie1988spearman}, etc.) can not deal with time series similarity problem when time series have heterogeneous patterns.
-The reason is: for heterogeneous time series, the correlation information is often associated with the change (During a period of time) of time series, rather than a point-to-point relationship in the traditional correlation analysis techniques. We will introduce the related research of point to point based similarity measure in detail in Section \ref{sec:relatedwork}.
+The reason is: for heterogeneous time series, the correlation information is often associated with the change (During a period of time) of time series, rather than a point-to-point relationship. We will introduce the related research of point to point based similarity measure in detail in Section \ref{sec:relatedwork}.
 
 As a result, in order to deal with heterogeneity properties of time series, we proposed a change based correlation coefficient.
 Our change based correlation method firstly extract the change information of the time series data, and then use the change information to calculate the correlation coefficient between the two time series.
-By taking the advantage of this correlation coefficient, we propose to use LSH method to dealing with very large top-k searching problems.
+In addition, our measure admits locality sensitive
+hashing (LSH) scheme, leading to efficient sub-linear
+search and clustering algorithms.
 
 The contribution of this paper is listed as follow:
 \begin{enumerate}
 \item Motivated by real applications, we investigate the correlation
-problem as between heterogeneous time series .
+problem between heterogeneous time series.
 To the best of our knowledge, this is the first attempt
 to evaluate the correlation between time series with different patterns.
 
-\item We proposed a correlation coefficient between heterogeneous time series. By taking the advantage of this correlation coefficient, we can do searching and mining on large scale time series datasets.
+\item We proposed a correlation coefficient between heterogeneous time series. By taking the advantage of this correlation coefficient, we can use proposed measure under LSH scheme thus can do searching and mining on large scale time series datasets.
 
-
-\item The experiments on Synthetic data sets and Real world data sets show the effectiveness and efficiency of our method.
+\item The experiments on Synthetic data sets and real-world data sets show the effectiveness and efficiency of our method.
 \end{enumerate}
 
 The rest of the paper is organized as follows: In Section 2, we introduce the problem
