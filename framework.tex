@@ -1,12 +1,12 @@
 \section{The Approach}
 \label{sec:framework}
-In this section, we first propose a framework to analyze the correlation of heterogeneous time series, and then we introduce how to use hashing method to do fast searching.
+In this section, we first propose a framework to evaluate the correlation of heterogeneous time series, and then we introduce how to use LSH scheme to do fast searching.
 
-\subsection{Change Based Correlation Coefficient}
+\subsection{Change Based Correlation Evaluation Framework}
 
 The Change Based Correlation Coefficient can be calculated following the framework in Fig. \ref{fig:frame}.
 Given a time series, first, we extract the change information of the time series. 
-In this work, we regard the change information as bit-stream. In the bit-stream, $1$ denotes there is a change in this sub-series, and $0$ if not. We will introduce the change based information in details in the following section.
+In this work, we regard the change information as bit-stream. In the bit-stream, $1$ denotes there is a change in this sub-series, and $0$ if not. We will introduce the change based information extraction in details in the following section.
 
 After obtaining the change information of the time series, we then calculate the Jaccard similarity\cite{han2011data} coefficient between each other.
 As we defined before (Section \ref{sec:formulation}), if two time series often change at the same time, they may have correlation with each other. 
@@ -116,13 +116,26 @@ The change information of a time series is a bit-stream (Section \ref{sec:change
 
 As ar result, we can directly use LSH (Locality Sensitive Hashing) search algorithm to speed up the searching process. \cite{indyk1998approximate} 
 
-\subsection{Discuss about Sub-series Length w}
+\subsection{Connection Between proposed framework and Change based correlation definition}
 
-In this research, the sub-series length $w$ is a very important parameter.
-If the sub-series length $w$ is too short, then the change information can not be captured. 
-On the other hand, if the sub-series length $w$ is too long, then there will be too much noise information.
+In this subsection, we briefly discuss about the connection between the proposed framework and the definition.
 
-In some cases, the value of $m$ can be selected based on domain knowledge and experiments. In the experiment of this work, all the sub-series length are selected based on the domain knowledge.
+The proposed framework can detect change based correlation because of the following reasons:
+Recall the definition of time stamps showed in Section \ref{sec:formulation}, the equality of two time stamp is defined within a toleration of a small time interval $\sigma$. In other world, the change point in such small interval can be regarded as the same change. 
+As a result, the if two time series both have change point at this small interval, that means  these two time series have the same change point.
+So, the change information extraction can obtain all the change point information of the time series.
+
+The Jaccard Similarity Coefficient used in our method just match the jaccard distance in the change based correlation coefficient.
+
+Because of the above reasons, our method can detect the correlation just as defined.
+
+\subsection{Discuss about Sub-series Length $\sigma$}
+
+In this research, the sub-series length $\sigma$ is a very important parameter.
+If the sub-series length $\sigma$ is too short, then the change information can not be captured. 
+On the other hand, if the sub-series length $\sigma$ is too long, then there will be too much noise information.
+
+In some cases, the value of $\sigma$ can be selected based on domain knowledge and experiments. In the experiment of this work, all the sub-series length are selected based on the domain knowledge. 
 
 However, in most real world situations, there are millions of time series and events, and we do not have enough domain knowledge to pre-select the values of all sub-series lengths. 
 
@@ -132,4 +145,4 @@ Given a time series $S=(s_1,s_2,...,s_n)$, the autocorrelation is showed as foll
 \begin{equation}
 R(l) = E(s_i*s_{i-l}).
 \end{equation}
-where $l$ denotes the lag of the correlation. The autocorrelation function of a time series can be used to represent the energy of signals in the time series with a period of $l$ \cite{hamilton1994time}. Therefore, our length $m$ can be assigned as the value of the first peak to include the significant signal of the time series. For more detail of this selection method, please refer \cite{luo2014correlating}.
+where $l$ denotes the lag of the correlation. The autocorrelation function of a time series can be used to represent the energy of signals in the time series with a period of $l$ \cite{hamilton1994time}. Therefore, our length $\sigma$ can be assigned as the value of the first peak to include the significant signal of the time series. For more detail of this selection method, please refer \cite{luo2014correlating}.

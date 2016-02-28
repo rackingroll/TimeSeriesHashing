@@ -5,25 +5,23 @@ In this section, we make an empirical evaluation of our algorithm by performing 
 In order to evaluate the effectiveness of our algorithm, we choose three time series similarity algorithms and four correlation coefficient in our experiment. 
 
 For the three similarity algorithm, we choose L1-Distance, L2-Distance \cite{han2011data}, and DTW-Distance \cite{muller2007dynamic}. 
-And for the three similarity algorithm, we choose Pearson correlation \cite{nagelkerke1991note}, which is the widely used methods for correlation mining in time series. And also two ranking based correlation: The Kendall rank correlation \cite{kendall1938new}, and Spearman's rank correlation \cite{pirie1988spearman}.
+And for the three statistic correlation algorithm, we choose Pearson correlation coefficient\cite{nagelkerke1991note}, two ranking based correlation coefficients: The Kendall rank correlation \cite{kendall1938new}, and Spearman's rank correlation \cite{pirie1988spearman}.
 
 In the rest of this subsection, we briefly introduce the three similarity measures and the three Correlation measures.
- 
+
 \subsubsection{Similarity Measures}
 
 Given a two time series 
-$X=(x_1,x_2,...,x_m),Y=(y_1,y_2,...,y_m)$.
+$X=(x_1,x_2,...,x_m),Y=(y_1,y_2,...,y_m)$, where $m$ is the length of the time series.
 
 The L1-distance is denoted as follow:
-
 \begin{equation}
-L1(X,Y) = \sum_{1}^{m}|x_i-y_i|
+L_1(X,Y) = \sum_{1}^{m}|x_i-y_i|
 \end{equation}
 
 The L2-distance is denoted as follow:
-
 \begin{equation}
-L1(X,Y) = \sqrt{\sum_{1}^{m}|x_i-y_i|^2}
+L_2(X,Y) = \sqrt{\sum\nolimits_{1}^{m}|x_i-y_i|^2}
 \end{equation}
 
 The third similarity measure we used is DTW distance \cite{muller2007dynamic}, which is a famous time series similarity measure.
@@ -32,7 +30,7 @@ In order to introduce the DTW distance, we firstly construct an $m-by-m$ matrix 
 So, the optimal path is the path that minimize the warping cost:
 
 \begin{equation}
-DTW(X,Y) = \min { \sqrt{\sum_{k=1}^{K}w_k}}
+DTW(X,Y) = \min { \sqrt{\sum\nolimits_{k=1}^{K}w_k}}
 \end{equation}
 where, $w_k$ belongs to the $k-{th}$ element of a warping path $P$, which is a contiguous set of elements that represent a mapping between $X$ and $Y$.
 
@@ -40,48 +38,82 @@ where, $w_k$ belongs to the $k-{th}$ element of a warping path $P$, which is a c
 
 In this subsection, we introduce three widely used correlation measures between time series: Pearson Correlation \cite{pearson1904mathematical}, Kendall rank correlation \cite{kendall1938new}, and Spearman's rank correlation \cite{pirie1988spearman}.
 
-The Pearson correlation method is one of the most widely used method for measuring the correlation between two time series. The Pearson correlation coefficient, denoted as $\rho$. can be calculated as follow:
+The Pearson correlation coefficient, can be calculated as follow:
 
 \begin{equation*}
-\rho_{X,Y}^{Pearson}=\frac{cov(X,Y)}{\sigma_X\sigma_Y}=\frac{E[(X-\mu_X)(Y-\mu_Y)]}{\sigma_X\sigma_Y}
+Pearson(X,Y)=\frac{cov(X,Y)}{\sigma_X\sigma_Y}=\frac{E[(X-\mu_X)(Y-\mu_Y)]}{\sigma_X\sigma_Y}
 \end{equation*}
 where $cov$ is the covariance, $\sigma_X$ is the standard deviation of $X$, $\mu_X$ is the mean of $X$ and $E[*]$ denotes the expectation.
 
 The Kendall rank correlation \cite{kendall1938new} is defined as follow:
-
 \begin{equation*}
-\rho_{X,Y}^{Kendall}=\frac{N_c - N_d}{m(m-1)/2}
+Kendall(X,Y)=\frac{N_c - N_d}{m(m-1)/2}
 \end{equation*}
-
-Where $N_c$ is the number of concordant pairs, and $N_d$ is the number of discordant pairs, and $m$ is the dimension of the time series.
+where $N_c$ is the number of concordant pairs, and $N_d$ is the number of discordant pairs, and $m$ is the dimension of the time series.
 For any pair $(x_i,y_i)$ and $x_j,y_j$, where $i \neq j$, are said to be concordant both $x_i > x_j$ and $y_i > y_j$, or $x_i < x_j$ and $y_i < y_j$. Otherwise, they are discordant.
 
 The Spearman's rank correlation \cite{pirie1988spearman} is defined as follow:
-
 \begin{equation*}
-\rho_{X,Y}^{Spearman}=1 - \frac{6\sum d^2_i}{n(n^2-1)}
+Spearman(X,Y)=1 - \frac{6\sum d^2_i}{n(n^2-1)}
 \end{equation*}
-
 where $d_i$ is defined as the difference between the ranks of $x_i$ and $y_i$.
+
+\subsection{Evaluation Strategy}
+In order to evaluate both the correctness and efficiency of our method, we design two tasks using our measure and other measures: Time Series Clustering Task, and Time Series Top-k Search Task. In the rest of this subsection, we will brief introduce these two tasks in details.
+
+\subsubsection{Clustering Task}
+
+In order to evaluate the performance of our correlation coefficient, we design a clustering task. 
+In this task, we use the Hierarchical Clustering \cite{han2011data} to evaluate the performance. Hierarchical Clustering is very sensitive to the distance measure. So, the clustering performance can directly illustrate the effectiveness of our method compared with other methods.
+
+Two evaluation methods are used for testing the clustering result: Accuracy \cite{han2011data}, which is calculated as the percentage of target objects clustered into the correct clusters. The clustering accuracy ($r$) is defined as
+\[
+r = \frac{\sum\nolimits_{i=1}^{k}a_i}{n}
+\]
+where $a_i$ is the number of data objects occurring both in $i$th cluster and its corresponding true class, and $n$ is the number of time series.
+
+Normalized Mutual Information (NMI) \cite{han2011data}, which is one of the most popular evaluation methods to evaluate the quality of clustering results. The normalized mutual information of two clustering result is defined as follow:
+\[
+NMI(X,Y) = \frac{I(X;Y)}{\sqrt{H(X)H(Y)}}
+\]
+where $X$ and $Y$ are vectors containing cluster labels for all the target objects, $I(X;Y)$ denotes the mutual information\cite{han2011data} of these two vector, $H(X)$ and $H(Y)$ are the marginal entropies\cite{han2011data}. 
+Both accuracy and NMI are in the range of 0 to 1, and a higher value indicates a better clustering result in terms of ground truth.
+
+\subsubsection{Top-K Searching Task}
+
+In this work, we propose to use LSH scheme to do fast search. So, we design a top-k search task for by using different measures.
+
+For the change based correlation measure, we use our proposed LSH search scheme. For the other similarity or correlation measures. We use naive based search. The step of naive based method is: (1) calculate all the distance between the query item and the items in the data set. (2) Ranking all the items based on the distance calculated in first step. (2) Return top k items. Naive based search can get the best search result for each measure.
+
+We compute precision and recall \cite{powers2011evaluation} to evaluate all the top-k search result.
+If the Searched time series is in the same cluster of the query time series, we regard it as a relevant items, and vice verse. We range the $K$ from $1$ to the cluster size. 
+
+For each top-k Nearest Neighbors search, the precision can be calculated as follow:
+\[Precision =\frac{relevant~item}{K} \]
+and the recall can be calculated as follow:
+\[
+Precision =\frac{relevant~item}{Relevant~Cluster~Size} 
+\]
 
 \subsection{Effectiveness Study on Synthetic Dataset}
 
 In this section, we introduce the experiment on the synthetic Dataset.
+We first brief describe the synthetic dataset, and then show the experimental result of each tasks on this data sets by using different measures.
 
 \subsubsection{The Synthetic Dataset}
 
-Synthetic data set is very useful for evaluating algorithms and functions for data mining and machine learning models\cite{han2011data}. 
-In this section, we introduce the Synthetic Dataset used in our experiment.
+Synthetic data set is very useful for evaluating algorithms and functions for data mining and machine learning models\cite{han2011data}. The steps of generating this synthetic data is showed as follow:
 
-In this synthetic Dataset, we randomly generate $10000$ time series with two patterns of time series: (1) Periodical Pattern, (2) Linear Pattern.
-Each time series was added with white noise \cite{han2011data}. 
-Then, we separate the $10000$ time series into five groups. And within each group, we add change randomly at the same time. (In each group, the change points are same.)
-Seven different types of changes are added randomly into each time series, the seven change types are showed in Table.\ref{Tab:ChangeType}.
+\begin{description}
+  \item[Step 1] randomly generate $10000$ time series with two patterns of time series: (1) Periodical Pattern, (2) Linear Pattern. The length of each time series is $5000$. 
+  \item[Step 2] Add white noise and correlated noise randomly \cite{han2011data} on each time series.
+  \item[Step 3] Random shuffle all the $10000$ time series and Divide these $10000$ time series into $5$ groups.
+  \item[Step 4] Add change randomly into $5$ groups, within same group, the change times are same, with different groups the change time are different. Seven different types of changes are added randomly into each time series, the seven change types are showed in Table.\ref{Tab:ChangeType}.
+\end{description}
 
 \begin{table}[t]
 \caption{\textbf{Change Types in the Synthetic Data}}
 \centering
-
 \begin{tabular}{|c|}
 \hline Change Type \\
 \hline Mean Change \\
@@ -95,8 +127,26 @@ Seven different types of changes are added randomly into each time series, the s
 \label{Tab:ChangeType}
 \end{table}
 
-In order to test both the efficiency and effectiveness of change based correlation coefficient. We choose four sub-set from such dataset. 
+After obtaining these $10000$ time series with five groups.
+In order to test both the efficiency and effectiveness of change based correlation coefficient. 
+We choose four sub-set from these time series. 
 We make the data set size from small to large, and also the time series length from short to long. The four sub dataset is showed in Table.\ref{Tab:SDataScale}. 
+
+\begin{table}[t]
+\caption{Summery of Synthetic Data}
+\centering
+
+\begin{tabular}{|c|c|c|}
+\hline DataSet &  Data Size & Time Series Length\\
+\hline Synthetic-T0 & 1000 & 800 \\
+\hline Synthetic-T1 & 1000 & 5000 \\
+\hline Synthetic-T2 & 10000 & 800 \\
+\hline Synthetic-T3 & 10000 & 5000 \\
+\hline
+\end{tabular}
+\label{Tab:SDataScale}
+\end{table}
+
 
 \begin{table*}
 \caption{Clustering Performance on Synthetic Data Set}
@@ -130,29 +180,37 @@ Dataset & Measure & Proposed & $L1$ & $L2$ & DTW & Pearson & Kendall & Spearman 
 \end{tabular}
 \label{Tab:ClusRes}
 \end{table*}
+%\begin{figure*}[t]
+%\centering
+%\includegraphics[width=0.8\textwidth]{SythClusPerf.eps}
+%\caption{Top-k Nearest Neighbor Search}
+%\label{Fig:ClusPerf}
+%\end{figure*}
+
+%\begin{figure*}
+%\centering
+%\subfigure{%
+%\includegraphics[width=0.45\textwidth]{VaryDataSize.eps}
+%}\hspace{0.001em}
+%\subfigure{%
+%\includegraphics[width=0.45\textwidth]{VaryDataDimension.eps}
+%}\hspace{0.001em}
+%\caption{Efficiency by varying data size and dimension size}
+%\label{fig:NNPerf}
+%\end{figure*}
 
 
-\begin{table}[t]
-\caption{Summery of Synthetic Data}
-\centering
 
-\begin{tabular}{|c|c|c|}
-\hline DataSet &  Data Size & Time Series Length\\
-\hline Synthetic-T0 & 1000 & 800 \\
-\hline Synthetic-T1 & 1000 & 5000 \\
-\hline Synthetic-T2 & 10000 & 800 \\
-\hline Synthetic-T3 & 10000 & 5000 \\
-\hline
-\end{tabular}
-\label{Tab:SDataScale}
-\end{table}
+\subsubsection{Clustering task on Synthetic Data}
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.8\textwidth]{SythClusPerf.eps}
-\caption{Top-k Nearest Neighbor Search}
-\label{Fig:ClusPerf}
-\end{figure*}
+The clustering task result on these four synthetic data are showed in Table.\ref{Tab:ClusRes}.
+
+From Table.\ref{Tab:ClusRes}, we can see that, for the change correlation coefficient, the clustering result performance is better for the high dimensional data set.
+This is because that for high dimensional time series data, the proposed coefficient can extract more change information from the time series data and also make more accurate evaluation of the correlation. 
+From this point of view, change based correlation is more suitable for the high dimensional time series data set.
+On the other hand, Change based correlation can obtain more accuracy results in different dataset compared with both the similarity method and the correlation coefficient. So, the result of clustering show the effectiveness of our coefficient.
+
+\subsubsection{Top-k Searching task on Synthetic Data}
 
 \begin{figure*}[t]
 \centering
@@ -174,62 +232,40 @@ Dataset & Measure & Proposed & $L1$ & $L2$ & DTW & Pearson & Kendall & Spearman 
 \label{fig:NNPreRe}
 \end{figure*}
 
-
-\begin{figure*}
+\begin{table}
+\caption{Query Time for Top-10 Search}
 \centering
-\subfigure{%
-\includegraphics[width=0.45\textwidth]{VaryDataSize.eps}
-}\hspace{0.001em}
-\subfigure{%
-\includegraphics[width=0.45\textwidth]{VaryDataDimension.eps}
-}\hspace{0.001em}
-\caption{Efficiency by varying data size and dimension size}
-\label{fig:NNPerf}
-\end{figure*}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{ccccc} 
+\toprule[2pt] 
+%\hline
+\multirow{2}*{\centering{Measure}}
+     & \multicolumn{4}{c}{Data Set} \\
+\cline{2-5}
+     & T0\footnote{``T0" denotes Synthetic-T0} & T1 & T2 & T3\\
+\toprule[1.2pt] 
+     Proposed & $0.004$ & $0.01$ & $0.0033$ & $0.08$\\
+\hline
+     L1 & $0.01$ & $0.1$ & $0.13$ & $0.85$\\
+\hline
+     L2& $0.02$ & $0.15$ & $0.15$ & $1.05$\\
+\hline
+     DTW & $0.7$ & $107.59$ & $15.82$ & $0.20$\\
+\hline
+     Pearson & $0.22$ & $0.29$ & $2.04$ & $0.85$\\
+\hline
+     Kendall & $2.80$ & $55.39$ & $26.53$ & $2.07$\\
+\hline
+     Spearman & $0.4$ & $1.81$ & $3.87$ & $1.18$\\
+\toprule[1.2pt] 
+\end{tabular}
+\label{Tab:Synthetic}
+\end{table}
 
+The plots for all the four datasets are shown in Figure.\ref{fig:NNPreRe}. We can clearly see that our proposed Change-based Correlation method gives significantly higher precision recall curves than other similarity and correlation methods. In addition the results are consistent across datasets. 
 
-\subsubsection{Clustering Task}
+Table.\ref{Tab:Synthetic} shows the Execution time of the clustering task on each data set. From the result, we can see that change based correlation performed much faster than other algorithms. 
 
-In order to evaluate the performance of our correlation coefficient, we design a clustering task on the Synthetic Time series data. In this experiment, we only use the Hierarchical Clustering \cite{han2011data} to evaluate the performance. Because Hierarchical Clustering is very sensitive to the distance measure used, it is good for evaluating the distance measure.
-
-Two evaluation methods are used for testing the clustering result: Accuracy \cite{han2011data}, which is calculated as the percentage of target objects clustered into the correct clusters; and Normalized Mutual Information (NMI) \cite{han2011data}, which is one of the most popular evaluation methods to evaluate the quality of clustering results.
-
-From Table.\ref{Tab:ClusRes}, we can see that, for the change correlation coefficient, the clustering result performance is better for the high dimensional data set.
-This is because that for high dimensional time series data, the proposed coefficient can extract more change information from the time series data and also make more accurate evaluation of the correlation. 
-From this point of view, change based correlation is more suitable for the high dimensional time series data set.
-On the other hand, Change based correlation can obtain more accuracy results in different dataset compared with both the similarity method and the correlation coefficient. So, the result of clustering show the effectiveness of our coefficient.
-
-Fig.\ref{Fig:ClusPerf} shows the Execution time of the clustering task on each data set. From the result, we can see that change based correlation performed much faster than other algorithms. This is because, we only calculate the correlation on the extracted change information (Bit-stream), the calculating of change based correlation measure can be much faster than other similarity and correlation methods.
-
-
-\subsubsection{Top-K Searching Task}
-
-We compute precision and recall \cite{powers2011evaluation} on the data-set using the LSH-based method. And for other distance measure, we use the naive Top-K searching method. 
-
-For precision and recall, if the Searched time series is in the same cluster of the query time series, we regard it as a relevant items, and vice verse. We range the $K$ from $1$ to the cluster size. 
-
-For each top-k Nearest Neighbors search, the precision can be calculated as follow:
-
-\begin{equation}
-Precision =\frac{relevant~item}{K} 
-\end{equation}
-
-and the recall can be calculated as follow:
-
-\begin{equation}
-Precision =\frac{relevant~item}{Relevant~Cluster~Size} 
-\end{equation}
-
-The plots for all the three datasets are shown in Figure.\ref{fig:NNPreRe}.
-We can clearly see that our proposed Change-based Correlation method gives significantly higher precision recall curves than other similarity and correlation methods. In addition the results are consistent across datasets.
-
-Fig.\ref{fig:NNPerf} shows the execution time by vary the data size and the time series length.
-In left one of Fig.\ref{fig:NNPerf}, we fix the value of time series length, and
-vary the data size n. We can see that the CPU execution
-time of other similarity methods increased sharply by enlarging the data size. 
-And, the change based correlation do not change so much by enlarge the data size.
-
-In right of Fig. \ref{fig:NNPerf}, we fix the size of data size, and vary the value of time series length. Based on the results, we can see that the running time of the proposed change based method with LSH doesn't so much with the increase of time series length, while other methods increase by enlarging the time series length.
 
 \subsection{Effectiveness Study on Real Datasets}
 
@@ -244,6 +280,8 @@ From Table.\ref{Tab:ECGClus}, we can see that, for the change based correlation 
 
 For the Top-K searching task. The plots for all the four ECG dataset datasets are shown in Figure.\ref{fig:ECGPRC}.
 We can clearly see that our proposed Change-based Correlation method gives significantly higher precision recall curves than other similarity and correlation methods. In addition the results are consistent across datasets. This demonstrate the effectiveness of change-based correlation coefficient and the corresponding LSH search algorithm.
+
+Table.\ref{Tab:ECGTime} shows the Execution time of the top-k searching task on each ECG data set. From the result, we can see that change based correlation performed much faster than other algorithms. 
 
 \begin{table*}[t]
 \caption{Summary of the Four ECG Data Set}
@@ -311,15 +349,55 @@ Dataset & Measure & Proposed & $L1$ & $L2$ & DTW & Pearson & Kendall & Spearman 
 \label{fig:ECGPRC}
 \end{figure*}
 
+\begin{table*}
+\caption{Query Time for Top-10 Search}
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{ccccc} 
+\toprule[2pt] 
+%\hline
+\multirow{2}*{\centering{Measure}}
+     & \multicolumn{4}{c}{Data Set} \\
+\cline{2-5}
+     & CinCECGtorso & ECG5000 & TwoLeadECG & ECGFiveDays\\
+\toprule[1.2pt] 
+     Proposed & $0.005$ & $0.02$ & $0.003$ & $0.01$\\
+\hline
+     L1 & $0.04$ & $0.07$ & $0.01$ & $0.028$\\
+\hline
+     L2& $0.05$ & $0.078$ & $0.11$ & $0.030$\\
+\hline
+     DTW & $12.55$ & $0.59$ & $0.025$ & $0.20$\\
+\hline
+     Pearson & $0.31$ & $0.15$ & $0.21$ & $0.85$\\
+\hline
+     Kendall & $10.67$ & $0.39$ & $0.39$ & $2.07$\\
+\hline
+     Spearman & $0.82$ & $0.23$ & $0.28$ & $1.18$\\
+\toprule[1.2pt] 
+\end{tabular}
+\label{Tab:ECGTime}
+\end{table*}
 
 \subsubsection{HPC Thread Time Series Data set}
 
-The second real world dataset is from the HPC-tool Kit Dataset. This data set provided by HPCToolkit by analysis High performance computer during running. There are two types of thread in these two data set: main thread and other thread. So, the experiment here is based on the ground truth of two different class of thread.
+The second real world dataset is collected from the HPCToolKit during three HPC task running. 
 
-We also use the Hierarchical Clustering \cite{han2011data} to evaluate the performance as before. 
+\begin{description}
+  \item[Single PC] \hfill \\
+  Single PC is a small toy execution task that execute on a single PC and small number of threads (20). In this datasets, there are two types of threads: Main Thread and Child Thread. We use the label of Main Thread and Child Thread as ground truth information.
+  \item[MADNESS] \hfill \\ MADNESS\footnote{https://en.wikipedia.org/wiki/MADNESS} is a high level software sofware environment for Scientific Simulation. We use this environment to simulation several Scientific calculations, and generate 264 threads.
+  The same of Single PC dataset, there are two types of thread: Main Thread and Child Thread. We also use them as ground truth information.
+  \item[Earth Environment Simulation] \hfill \\ 
+  This data set is collected from an earth Environment Simulation task. In this task, there are a several of simulation programs, including Oceans Simulation Programs, Weather simulation Programs, and several other simulation programs. The Oceans Simulation Program, and the Weather simulation Program are correlated with each other due to high frequency data transformation and communication. So the ground truth in this data is defined that programs with high frequency communications are having the same label.
+  \ldots
+\end{description}
+
+We perform both clustering task and top-k search task on these three data set.
+
 From Table.\ref{Tab:HPCClus}, we can see that, for the change based correlation can obtain more accuracy results in the two HPC Thread Time series data set compared with both the similarity method and the correlation coefficient. While we can see that DTW method can also get high accuracy, this because in data set, most of the thread in same class often in same state. However, as we said before, in some cases, thread in same class, the state can be different.
 
-The precision recall curve for the HPC Thread TIme Series data is showed in Figure \ref{fig:HPCPRC}. We can clearly see that our proposed Change-based Correlation method gives higher precision recall curves than other similarity and correlation methods. Also, DTW method can get good result too. In addition the results are consistent across datasets. This demonstrate the effectiveness of change-based correlation coefficient and the corresponding LSH search algorithm.
+The precision recall curve for the HPC Thread TIme Series data is showed in Figure \ref{fig:HPCPRC}. We can clearly see that our proposed Change-based Correlation method gives higher precision recall curves than other similarity and correlation methods. Also, DTW method can get good result too. In addition the results are consistent across datasets. This demonstrate the effectiveness of change-based correlation coefficient and the corresponding LSH scheme.
 
 \begin{table}
 \caption{Summary of the HPC Time Series Data Set}
@@ -333,6 +411,36 @@ The precision recall curve for the HPC Thread TIme Series data is showed in Figu
 \hline
 \end{tabular}
 \label{Tab:HPCData}
+\end{table}
+
+\begin{table}[t]
+\caption{Query Time for Top-10 Search}
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{cccc} 
+\toprule[2pt] 
+%\hline
+\multirow{2}*{\centering{Measure}}
+     & \multicolumn{3}{c}{Data Set} \\
+\cline{2-4}
+     & SinglePC & MADNESS & Earth \\
+\toprule[1.2pt] 
+     Proposed & $0.02$ & $0.16$ & $0.10$ \\
+\hline
+     L1 & $0.18$ & $1.02$ & $0.53$ \\
+\hline
+     L2& $0.48$ & $5.27$ & $2.79$ \\
+\hline
+     DTW & $21.83$ & $2537.21$ & $898.31$ \\
+\hline
+     Pearson & $0.35$ & $2.45$ & $1.20$ \\
+\hline
+     Kendall & $9.25$ & $1324.26$ & $536.32$ \\
+\hline
+     Spearman & $1.25$ & $315.45$ & $112.56$ \\
+\toprule[1.2pt] 
+\end{tabular}
+\label{Tab:HPCTime}
 \end{table}
 
 \begin{table*}[t]
@@ -377,7 +485,5 @@ Dataset & Measure & Proposed & $L1$ & $L2$ & DTW & Pearson & Kendall & Spearman 
 \caption{Precision Recall Curve (higher is better). We compare Change based correlation coefficient with other methods.}
 \label{fig:HPCPRC}
 \end{figure}
-
-
 
 
