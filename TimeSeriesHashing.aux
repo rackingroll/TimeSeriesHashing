@@ -36,16 +36,10 @@
 \newlabel{sec:formulation}{{2}{\thepage }}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Preliminary Definition}{\thepage }}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Change based Time Series Correlation}{\thepage }}
+\newlabel{def:changeCorrelaion}{{5}{\thepage }}
 \@writefile{toc}{\contentsline {section}{\numberline {3}The Approach}{\thepage }}
 \newlabel{sec:framework}{{3}{\thepage }}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Change Based Correlation Evaluation Framework}{\thepage }}
-\citation{liu2013change}
-\citation{chen2013contextual}
-\citation{gretton2006kernel}
-\citation{moore2007basic}
-\citation{han2011data}
-\citation{rakthanmanon2012searching}
-\citation{indyk1998approximate}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Overview of the Framework\relax }}{\thepage }}
 \newlabel{fig:frame}{{3}{\thepage }}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Change Information Extraction\relax }}{\thepage }}
@@ -53,15 +47,30 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Change Information Extraction}{\thepage }}
 \newlabel{ChangeCorrelation}{{3.2}{\thepage }}
 \newlabel{Equ:ChangeInformation}{{3}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Change Detection}{\thepage }}
+\newlabel{Equ:BitStream}{{4}{\thepage }}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Three different types of change: (1) Frequency Change, (2) Mean Change, and (3) Variance Change\relax }}{\thepage }}
+\newlabel{fig:ChangeType}{{5}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Change Detection in sub-series}{\thepage }}
 \newlabel{sec:changeDetect}{{3.3}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Jaccard Similarity Coefficient}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Speed up Top-k Search using LSH}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Connection Between proposed framework and Change based correlation definition}{\thepage }}
+\citation{gretton2006kernel}
+\citation{moore2007basic}
+\citation{liu2013change}
+\citation{chen2013contextual}
+\citation{ding2015yading}
 \citation{luo2014correlating}
 \citation{hamilton1994time}
-\citation{hamilton1994time}
 \citation{luo2014correlating}
+\citation{ding2015yading}
+\citation{han2011data}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Time domain of a time series and the frequency domain of the time series.\relax }}{\thepage }}
+\newlabel{fig:FFT}{{6}{\thepage }}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Frequency Change Detection}{\thepage }}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}Mean and Variance Change Detection}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Discuss about Sub-series Length w}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Jaccard Similarity Coefficient}{\thepage }}
+\citation{rakthanmanon2012searching}
+\citation{shrivastava2014asymmetric}
+\citation{indyk1998approximate}
 \citation{han2011data}
 \citation{muller2007dynamic}
 \citation{nagelkerke1991note}
@@ -74,13 +83,13 @@
 \citation{kendall1938new}
 \citation{pirie1988spearman}
 \citation{han2011data}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Discuss about Sub-series Length $\sigma $}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}LSH Scheme}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Correctness Discussion}{\thepage }}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Empirical Evaluation}{\thepage }}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Comparison Methods}{\thepage }}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Similarity Measures}{\thepage }}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Correlation Measures}{\thepage }}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Evaluation Strategy}{\thepage }}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Clustering Task}{\thepage }}
 \citation{han2011data}
 \citation{han2011data}
 \citation{han2011data}
@@ -88,94 +97,97 @@
 \citation{powers2011evaluation}
 \citation{han2011data}
 \citation{han2011data}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Clustering Task}{\thepage }}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Top-K Searching Task}{\thepage }}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Effectiveness Study on Synthetic Dataset}{\thepage }}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}The Synthetic Dataset}{\thepage }}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \textbf  {Change Types in the Synthetic Data}\relax }}{\thepage }}
 \newlabel{Tab:ChangeType}{{1}{\thepage }}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Summery of Synthetic Data\relax }}{\thepage }}
 \newlabel{Tab:SDataScale}{{2}{\thepage }}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}The Synthetic Dataset}{\thepage }}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Clustering task on Synthetic Data}{\thepage }}
 \citation{UCRArchive}
-\citation{han2011data}
 \@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Clustering Performance on Synthetic Data Set\relax }}{\thepage }}
 \newlabel{Tab:ClusRes}{{3}{\thepage }}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Precision Recall Curve for Different Algorithms\relax }}{\thepage }}
+\newlabel{fig:NNPreRe}{{7}{\thepage }}
 \@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Query Time for Top-10 Search\relax }}{\thepage }}
 \newlabel{Tab:Synthetic}{{4}{\thepage }}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.3}Top-k Searching task on Synthetic Data}{\thepage }}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Effectiveness Study on Real Datasets}{\thepage }}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}Electrocardiogram Data set}{\thepage }}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}HPC Thread Time Series Data set}{\thepage }}
+\citation{han2011data}
 \citation{johnson2002applied}
 \citation{nagelkerke1991note}
 \citation{Zhu:VLDB:2002}
 \citation{wu2010detecting}
 \citation{Lehman:SAS:2005}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Precision Recall Curve for Different Algorithms\relax }}{\thepage }}
-\newlabel{fig:NNPreRe}{{5}{\thepage }}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Summary of the Four ECG Data Set\relax }}{\thepage }}
-\newlabel{Tab:ECGData}{{5}{\thepage }}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Related Work}{\thepage }}
-\newlabel{sec:relatedwork}{{5}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Correlation between Time Series Data}{\thepage }}
 \citation{basseville1993detection}
 \citation{kadambe1992application}
 \citation{hirano2002mining}
 \citation{yamanishi2002unifying}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}HPC Thread Time Series Data set}{\thepage }}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Summary of the HPC Time Series Data Set\relax }}{\thepage }}
+\newlabel{Tab:HPCData}{{8}{\thepage }}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Query Time for Top-10 Search\relax }}{\thepage }}
+\newlabel{Tab:HPCTime}{{9}{\thepage }}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Related Work}{\thepage }}
+\newlabel{sec:relatedwork}{{5}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Correlation between Time Series Data}{\thepage }}
 \bibstyle{abbrv}
 \bibdata{TimeSeriesHashing}
 \bibcite{adhianto2010hpctoolkit}{1}
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Clustering Performance on Synthetic ECG Data Set From UCR Time Series Archive\relax }}{\thepage }}
-\newlabel{Tab:ECGClus}{{6}{\thepage }}
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Query Time for Top-10 Search\relax }}{\thepage }}
-\newlabel{Tab:ECGTime}{{7}{\thepage }}
-\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Summary of the HPC Time Series Data Set\relax }}{\thepage }}
-\newlabel{Tab:HPCData}{{8}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Change Point Detection}{\thepage }}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion and Future Works}{\thepage }}
-\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Query Time for Top-10 Search\relax }}{\thepage }}
-\newlabel{Tab:HPCTime}{{9}{\thepage }}
-\@writefile{toc}{\contentsline {section}{\numberline {7}References}{\thepage }}
 \bibcite{basseville1993detection}{2}
 \bibcite{caracca2000discovering}{3}
 \bibcite{chen2013contextual}{4}
 \bibcite{chen2013dtw}{5}
 \bibcite{UCRArchive}{6}
 \bibcite{nagelkerke1991note}{7}
-\bibcite{granger2014forecasting}{8}
-\bibcite{gretton2006kernel}{9}
-\bibcite{hamilton1994time}{10}
-\bibcite{han2011data}{11}
-\bibcite{hirano2002mining}{12}
-\bibcite{holter1961new}{13}
-\bibcite{indyk1998approximate}{14}
-\bibcite{johnson2002applied}{15}
-\bibcite{kadambe1992application}{16}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Precision Recall Curve (higher is better). We compare Change based correlation coefficient with other methods.\relax }}{\thepage }}
-\newlabel{fig:ECGPRC}{{6}{\thepage }}
-\bibcite{kendall1938new}{17}
-\bibcite{liu2013change}{18}
-\bibcite{luo2014correlating}{19}
-\bibcite{marriott1988practical}{20}
-\bibcite{mccurdy2010memphis}{21}
-\bibcite{moore2007basic}{22}
-\bibcite{mudelsee2013climate}{23}
-\bibcite{muller2007dynamic}{24}
-\bibcite{oates2000method}{25}
-\bibcite{pearson1904mathematical}{26}
-\bibcite{pirie1988spearman}{27}
-\bibcite{powers2011evaluation}{28}
-\bibcite{rabiner1993fundamentals}{29}
-\bibcite{rakthanmanon2012searching}{30}
-\bibcite{Lehman:SAS:2005}{31}
+\bibcite{ding2015yading}{8}
+\bibcite{granger2014forecasting}{9}
+\bibcite{gretton2006kernel}{10}
+\bibcite{hamilton1994time}{11}
+\bibcite{han2011data}{12}
+\bibcite{hirano2002mining}{13}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Summary of the Four ECG Data Set\relax }}{\thepage }}
+\newlabel{Tab:ECGData}{{5}{\thepage }}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Clustering Performance on Synthetic ECG Data Set From UCR Time Series Archive\relax }}{\thepage }}
+\newlabel{Tab:ECGClus}{{6}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Change Point Detection}{\thepage }}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{\thepage }}
+\@writefile{toc}{\contentsline {section}{\numberline {7}References}{\thepage }}
+\bibcite{holter1961new}{14}
+\bibcite{indyk1998approximate}{15}
+\bibcite{johnson2002applied}{16}
+\bibcite{kadambe1992application}{17}
+\bibcite{kendall1938new}{18}
+\bibcite{liu2013change}{19}
+\bibcite{luo2014correlating}{20}
+\bibcite{marriott1988practical}{21}
+\bibcite{mccurdy2010memphis}{22}
+\bibcite{moore2007basic}{23}
+\bibcite{mudelsee2013climate}{24}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Precision Recall Curve (higher is better). We compare Change based correlation coefficient with other methods.\relax }}{\thepage }}
+\newlabel{fig:ECGPRC}{{8}{\thepage }}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Query Time for Top-10 Search\relax }}{\thepage }}
+\newlabel{Tab:ECGTime}{{7}{\thepage }}
+\bibcite{muller2007dynamic}{25}
+\bibcite{oates2000method}{26}
+\bibcite{pearson1904mathematical}{27}
+\bibcite{pirie1988spearman}{28}
+\bibcite{powers2011evaluation}{29}
+\bibcite{rabiner1993fundamentals}{30}
+\bibcite{rakthanmanon2012searching}{31}
+\bibcite{Lehman:SAS:2005}{32}
+\bibcite{shrivastava2014asymmetric}{33}
+\bibcite{sonka2014image}{34}
+\bibcite{sun2014querying}{35}
+\bibcite{tallent2009effective}{36}
+\bibcite{wu2010detecting}{37}
+\bibcite{yamanishi2002unifying}{38}
+\bibcite{yang2002detecting}{39}
+\bibcite{Zhu:VLDB:2002}{40}
 \@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Clustering Performance on Synthetic ECG Data Set From UCR Time Series Archive\relax }}{\thepage }}
 \newlabel{Tab:HPCClus}{{10}{\thepage }}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Precision Recall Curve (higher is better). We compare Change based correlation coefficient with other methods.\relax }}{\thepage }}
-\newlabel{fig:HPCPRC}{{7}{\thepage }}
-\bibcite{sonka2014image}{32}
-\bibcite{sun2014querying}{33}
-\bibcite{tallent2009effective}{34}
-\bibcite{wu2010detecting}{35}
-\bibcite{yamanishi2002unifying}{36}
-\bibcite{yang2002detecting}{37}
-\bibcite{Zhu:VLDB:2002}{38}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Precision Recall Curve (higher is better). We compare Change based correlation coefficient with other methods.\relax }}{\thepage }}
+\newlabel{fig:HPCPRC}{{9}{\thepage }}

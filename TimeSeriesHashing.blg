@@ -1,27 +1,70 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: TimeSeriesHashing.aux
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: TimeSeriesHashing.aux
 The style file: abbrv.bst
 Database file #1: TimeSeriesHashing.bib
-Repeated entry---line 931 of file TimeSeriesHashing.bib
+Repeated entry---line 1861 of file TimeSeriesHashing.bib
  : @inproceedings{chen2013dtw
  :                           ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1008 of file TimeSeriesHashing.bib
+Repeated entry---line 2015 of file TimeSeriesHashing.bib
  : @inproceedings{luo2014correlating
  :                                  ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1100 of file TimeSeriesHashing.bib
+Repeated entry---line 2199 of file TimeSeriesHashing.bib
  : @book{han2011data
  :                  ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1142 of file TimeSeriesHashing.bib
+Repeated entry---line 2283 of file TimeSeriesHashing.bib
  : @misc{UCRArchive
  :                 ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1159 of file TimeSeriesHashing.bib
+Repeated entry---line 2317 of file TimeSeriesHashing.bib
  : @book{basseville1993detection
  :                              ,
 I'm skipping whatever remains of this entry
 Warning--empty journal in nagelkerke1991note
 Warning--empty journal in rabiner1993fundamentals
 Warning--can't use both volume and number fields in tallent2009effective
+You've used 40 entries,
+            2118 wiz_defined-function locations,
+            722 strings with 10776 characters,
+and the built_in function-call counts, 15404 in all, are:
+= -- 1546
+> -- 694
+< -- 23
++ -- 280
+- -- 234
+* -- 979
+:= -- 2410
+add.period$ -- 133
+call.type$ -- 40
+change.case$ -- 225
+chr.to.int$ -- 0
+cite$ -- 43
+duplicate$ -- 652
+empty$ -- 1217
+format.name$ -- 234
+if$ -- 3363
+int.to.chr$ -- 0
+int.to.str$ -- 40
+missing$ -- 50
+newline$ -- 203
+num.names$ -- 80
+pop$ -- 316
+preamble$ -- 1
+purify$ -- 196
+quote$ -- 0
+skip$ -- 491
+stack$ -- 0
+substring$ -- 937
+swap$ -- 220
+text.length$ -- 23
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 138
+warning$ -- 3
+while$ -- 148
+width$ -- 42
+write$ -- 443
 (There were 5 error messages)

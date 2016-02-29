@@ -76,9 +76,7 @@ In this simulation task, the Ocean Simulation Program and the Weather Simulation
 These two programs need to exchange data during the environment simulation task executing. 
 And once they communicate and exchange data with each other, their call path state will also change (As showed in Fig.\ref{fig:hpcexample}).
 
-The DTW distance between Thread0 and Thread 4 is $0.8$, which means they have large distance and does not correlate with each other. This is obvious contradict with the ground truth that they are correlated.
-
-It is obvious that the correlation between these two programs can not be detected using DTW distance. Because threads in the different program always have different states and point to point similarity measures (DTW, etc.) will regard these state difference as large distance.
+The DTW distance between Thread0 and Thread 4 is $0.8$, which means they have large distance and does not correlate with each other. This is obvious contradict with the ground truth that they are correlated. So the correlation between these two programs can not be detected using DTW distance. Because threads in the different program always have different states, and point to point similarity measures (DTW, etc.) will regard these state difference as large distance.
 
 On the other hand, by using our method, we can find a $0.6$ correlation coefficient with each other. This result clearly agrees with the ground truth that these two programs correlated.
 

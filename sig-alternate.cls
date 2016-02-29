@@ -854,7 +854,7 @@
 
 \newtoks\conf
 \newtoks\confinfo
-\def\conferenceinfo#1#2{\global\conf={#1}\global\confinfo{#2}}
+\def\conferenceinfo#1#2{\={#1}\global\confinfo{#2}}
 
 
 %\def\marginpar{\@latexerr{The \marginpar command is not allowed in the
@@ -1428,11 +1428,11 @@
 \def\crdata#1{\global\acmcopyr{#1}}
 \def\permission#1{\global\boilerplate{#1}}
 %
-\global\boilerplate={Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page.  To copy otherwise, to republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee.}
+\global\boilerplate={Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. To copy otherwise, to republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee.  Articles from this volume were invited to present their results at The 42nd International Conference on Very Large Data Bases, September 2016, New Delhi, India.}
+\global\conf{Proceedings of the VLDB Endowment,}
+\global\confinfo{Vol. 9, No. X}
 \newtoks\copyrightetc
-\global\copyrightetc{Copyright \the\copyrtyr\ ACM \the\acmcopyr\ ...\$15.00} % Gerry changed to 15 May 2012
-\toappear{\the\boilerplate\par
-{\confname{\the\conf}} \the\confinfo\par \the\copyrightetc.}
+\global\copyrightetc{Copyright 2016 VLDB Endowment 2150-8097/11/11... \$ 10.00}
 %\DeclareFixedFont{\altcrnotice}{OT1}{tmr}{m}{n}{8}  % << patch needed for accenting e.g. Montreal - Gerry, May 2007
 %\DeclareFixedFont{\altconfname}{OT1}{tmr}{m}{it}{8}  % << patch needed for accenting in italicized confname - Gerry, May 2007
 %

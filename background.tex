@@ -4,13 +4,14 @@ In this section, we formally define some concept of this work, including Time Se
 
 \subsection{Preliminary Definition}
 
+A time series is defined as follow:
 \begin{definition}[Time Series]
 A time series, denoted as $S = (s_1,s_2,...,s_m)$, where $m$ is the number of points in the time series. The timestamps of a time series, denoted as $TS = (t(s1), t(s2),..., t(sn))$, have the relationship of $t(s_i) = t(s_{i-1})+\tau$, where $\tau$is the sampling interval.
 \end{definition}
 
-In this work, we consider the change information of a time series, so the change point of a time series is defined as follow:
+Change points is defined as follow:
 \begin{definition}[Change Point]
-A time series, denoted as $S = (s_1,s_2,...,s_m)$, a change point is a time stamp $t_s(i)$that there is a change before and after this time stamp. Change contains the following types: mean change, variance change,  frequency change, and the combination between them.
+Given time series, denoted as $S = (s_1,s_2,...,s_m)$, a change point is a time stamp $t_s(i)$ that there is a change before and after this time stamp. Change contains the following types: mean change, variance change, frequency change, and all the combinations between them.
 \end{definition}
 
 The definition of change point set is defined as follow:
@@ -27,14 +28,14 @@ Where $t_x(i)$ denotes the change points of time series S.
 In most real world time series mining problems, the latency of a change in the time series is ubiquitous.
 For example, in a High-performance computer, a thread change of one stage may take some time to causal the other correlated state. And also for the ECG time series, the same disease may have slightly different latency in different bodies.
 
-As a result, in this work, we allow the tiny difference between time stamps and define the soft equality of two time-stamps as follow:
+As a result, in this work, we allow the tiny difference between time stamps and define the equality of two time-stamps as follow:
 
 \begin{definition}
 	Given two time stamp $t_1$ and $t_2$, then $t_1 = t_2$ if and only if:
 	\begin{equation}
-	t_1 - t_2 < \sigma
+	t_1 - t_2 < w
 	\end{equation}
-	where, $\sigma$ is a small time interval, and the value of $\sigma$ depends on the real world problems.
+	where, $w$ is a small time interval, and the value of $w$ depends on the real world problems.
 \end{definition}
 
 \subsection{Change based Time Series Correlation}
@@ -52,6 +53,7 @@ Before we formally define the change based correlation, we provide two intuition
 
 Based on the two intuitions above, we define the correlation of this work as follow:
 \begin{definition}[Change Based Correlation] 
+\label{def:changeCorrelaion}
 Suppose we have two time series: $X=(x_1,x_2,...,x_m),Y=(y_1,y_2,...,y_m)$, The change point set of X and Y are denoted as: 
 $C_X=(t_x(1),t_x(2),...,t_x(p))$
 $C_Y=(t_y(1),t_y(2),...,t_y(q))$
@@ -59,7 +61,7 @@ where $q$ and $p$ are numbers of change points for time series $X$ and $Y$.
 Then, the change based correlation coefficient is defined as the Jaccard distance \cite{han2011data} between $C_X$ and $C_Y$.
 
 \begin{equation}
-\rho(X,Y)^{ChangeCorrelation} = J(C_X,C_Y)=\frac{|C_X \cap C_Y|}{|C_X \cup C_Y|}
+ChangeCorrelation(X,Y) = J(C_X,C_Y)=\frac{|C_X \cap C_Y|}{|C_X \cup C_Y|}
 \end{equation}
 
 \end{definition}

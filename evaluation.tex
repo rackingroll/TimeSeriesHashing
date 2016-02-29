@@ -216,16 +216,16 @@ On the other hand, Change based correlation can obtain more accuracy results in 
 \centering
 
 \subfigure{%
-\includegraphics[width=0.41\textwidth]{PRC3.eps}
+\includegraphics[width=0.32\textwidth]{PRC3.eps}
 }\hspace{0.001em}
 \subfigure{%
-\includegraphics[width=0.41\textwidth]{PRC2.eps}
+\includegraphics[width=0.32\textwidth]{PRC2.eps}
 }\hspace{0.001em}
 \subfigure{%
-\includegraphics[width=0.41\textwidth]{PRC1.eps}
+\includegraphics[width=0.32\textwidth]{PRC1.eps}
 }\hspace{0.001em}
 \subfigure{%
-\includegraphics[width=0.41\textwidth]{PRC0.eps}
+\includegraphics[width=0.32\textwidth]{PRC0.eps}
 }
 %
 \caption{Precision Recall Curve for Different Algorithms}
@@ -334,16 +334,16 @@ Dataset & Measure & Proposed & $L1$ & $L2$ & DTW & Pearson & Kendall & Spearman 
 \begin{figure*}[t]
 \centering
 \subfigure{%
-\includegraphics[width=0.45\textwidth]{PRCCinCECGtorso.eps}
+\includegraphics[width=0.32\textwidth]{PRCCinCECGtorso.eps}
 }\hspace{0.001em}
 \subfigure{%
-\includegraphics[width=0.45\textwidth]{PRCECG5000.eps}
+\includegraphics[width=0.32\textwidth]{PRCECG5000.eps}
 }\hspace{0.001em}
 \subfigure{%
-\includegraphics[width=0.45\textwidth]{PRCTwoLeadECG.eps}
+\includegraphics[width=0.32\textwidth]{PRCTwoLeadECG.eps}
 }\hspace{0.001em}
 \subfigure{%
-\includegraphics[width=0.45\textwidth]{PRCECGFiveDays.eps}
+\includegraphics[width=0.32\textwidth]{PRCECGFiveDays.eps}
 }\hspace{0.001em}
 \caption{Precision Recall Curve (higher is better). We compare Change based correlation coefficient with other methods.}
 \label{fig:ECGPRC}
@@ -389,8 +389,7 @@ The second real world dataset is collected from the HPCToolKit during three HPC 
   \item[MADNESS] \hfill \\ MADNESS\footnote{https://en.wikipedia.org/wiki/MADNESS} is a high level software sofware environment for Scientific Simulation. We use this environment to simulation several Scientific calculations, and generate 264 threads.
   The same of Single PC dataset, there are two types of thread: Main Thread and Child Thread. We also use them as ground truth information.
   \item[Earth Environment Simulation] \hfill \\ 
-  This data set is collected from an earth Environment Simulation task. In this task, there are a several of simulation programs, including Oceans Simulation Programs, Weather simulation Programs, and several other simulation programs. The Oceans Simulation Program, and the Weather simulation Program are correlated with each other due to high frequency data transformation and communication. So the ground truth in this data is defined that programs with high frequency communications are having the same label.
-  \ldots
+  This data set is collected from an earth Environment Simulation task. In this task, there are several of simulation programs, the data include Oceans Simulation Programs, Weather simulation Programs. We generate some other programs which do not have communication with these two program. The Oceans Simulation Program, and the Weather simulation Program are correlated with each other due to high frequency data transformation and communication. So the ground truth in this data is defined that programs with high frequency communications are having the same label.
 \end{description}
 
 We perform both clustering task and top-k search task on these three data set.
@@ -471,19 +470,19 @@ Dataset & Measure & Proposed & $L1$ & $L2$ & DTW & Pearson & Kendall & Spearman 
 \label{Tab:HPCClus}
 \end{table*}
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
 \subfigure{%
-\includegraphics[width=0.45\textwidth]{PRCSinglePC.eps}
+\includegraphics[width=0.32\textwidth]{PRCSinglePC.eps}
 }\hspace{0.001em}
 \subfigure{%
-\includegraphics[width=0.45\textwidth]{PRCMADNESS.eps}
+\includegraphics[width=0.32\textwidth]{PRCMADNESS.eps}
 }\hspace{0.001em}
 \subfigure{%
-\includegraphics[width=0.45\textwidth]{PRCEnvironment.eps}
+\includegraphics[width=0.32 \textwidth]{PRCEnvironment.eps}
 }\hspace{0.001em}
 \caption{Precision Recall Curve (higher is better). We compare Change based correlation coefficient with other methods.}
 \label{fig:HPCPRC}
-\end{figure}
+\end{figure*}
 
 

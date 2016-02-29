@@ -40,6 +40,11 @@ J.~Cohen.
 \newblock Statistical power analysis for the behavioral sciences.
 \newblock 1988.
 
+\bibitem{ding2015yading}
+R.~Ding, Q.~Wang, Y.~Dang, Q.~Fu, H.~Zhang, and D.~Zhang.
+\newblock Yading: Fast clustering of large-scale time series data.
+\newblock {\em Proceedings of the VLDB Endowment}, 8(5):473--484, 2015.
+
 \bibitem{granger2014forecasting}
 C.~W.~J. Granger and P.~Newbold.
 \newblock {\em Forecasting economic time series}.
@@ -176,6 +181,13 @@ T.~Rakthanmanon, B.~Campana, A.~Mueen, G.~Batista, B.~Westover, Q.~Zhu,
 B.~Rosner.
 \newblock {\em Fundamentals of biostatistics}.
 \newblock Cengage Learning, 2010.
+
+\bibitem{shrivastava2014asymmetric}
+A.~Shrivastava and P.~Li.
+\newblock Asymmetric lsh (alsh) for sublinear time maximum inner product search
+  (mips).
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  2321--2329, 2014.
 
 \bibitem{sonka2014image}
 M.~Sonka, V.~Hlavac, and R.~Boyle.
