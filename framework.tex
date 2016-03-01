@@ -1,6 +1,6 @@
 \section{The Approach}
 \label{sec:framework}
-In this section, we first propose a framework to evaluate the correlation of heterogeneous time series, and then we introduce how to use LSH scheme to do fast searching.
+In this section, we propose a framework to evaluate the correlation of heterogeneous time series.
 
 \subsection{Change Based Correlation Evaluation Framework}
 
@@ -9,19 +9,13 @@ The Change Based Correlation Coefficient can be calculated following the framewo
 \begin{description}
   \item[Step 1: Change Information Extraction] \hfill \\
   Given a time series, first, we extract the change information of the time series. 
-  In this work, we regard the change information as bit-stream. In the bit-stream, $1$ denotes there is a change in this sub-series, and $0$ if not. 
+  In this work, the change information is regarded  as bit-streams. In the bit-stream, $1$ denotes there is a change in this sub-series, and $0$ if not. 
   We will introduce the change based information extraction in details in the following section.
   \item[Step 2: Correlating Change Information] \hfill \\
-  After obtaining the change information of the time series, we then calculate the correlation between the change information. In this work, we choose Jaccard similarity\cite{han2011data} coefficient to evaluate the correlation between change information.
+  After obtaining the change information of the time series, we then calculate the correlation based on the change information. In this work, we choose Jaccard similarity\cite{han2011data} coefficient to evaluate the correlation between change information.
 \end{description}
 
-In the rest of this section, we will introduce in detail of this framework.
-%Given a time series, first, we extract the change information of the time series. 
-%In this work, we regard the change information as bit-stream. In the bit-stream, $1$ denotes there is a change in this sub-series, and $0$ if not. We will introduce the change based information extraction in details in the following section.
-%As we defined before (Section \ref{sec:formulation}), if two time series often change at the same time, they may have correlation with each other. 
-%So, here, how often denotes the value of the correlation. In other words, how many $1$ do two time series both have. This is directly the Jaccard Distance.
-%So, the Jaccard similarity between each bit-stream will be the correlation coefficient between these two time series. 
-
+In the rest of this section, we will introduce in details of this framework.
 
 \begin{figure}[t]
 \centering
@@ -35,7 +29,7 @@ In the rest of this section, we will introduce in detail of this framework.
 
 As we introduced in Section.\ref{sec:formulation}, change based correlation corresponds to the change information of the time series. 
 Change information of a time series is a time period information, not a time point information. 
-As a result, in order to extract the change information of the time series, we need to find the information in small time period of the time series (A sub-series). 
+As a result, in order to extract the change information of the time series, we need to find the information in small time period of the time series (a sub-series). 
 The idea of extracting the change information is showed in Fig.\ref{fig:ChangeMapping}.
 
 \begin{figure}[t]
@@ -45,11 +39,11 @@ The idea of extracting the change information is showed in Fig.\ref{fig:ChangeMa
 \label{fig:ChangeMapping}
 \end{figure}
 
-From Fig. \ref{fig:ChangeMapping} we can see, given a time series 
+Given a time series 
 \[S = (s_1,s_2,...,s_m)\]
 where $m$ is the number of points in the time series.
 Given a subs-series length $w$, we divide the time series equally into $n = m/w$ equal pieces. It is pointed out that, $m/w$ may not be an integer, so in this work, we take the floor of $m/w$ as the value of $n$.
-After dividing the time series equally into $n$ pieces, we can get a sub-series set , dented as follow
+After dividing the time series equally into $n$ pieces, we can get a sub-series set $\Gamma_S$, dented as follow
 \[\Gamma_S = \{l_0,l_1,...,l_n\}\]
 where, $l_i$ is the $i$th sub-series of $S$, and the formation of $l_i$ is showed as follow:
 \[l_i = \{s_{i*w},s_{i*w+1},s_{i*w+2},...,s_{i*w+w-1}\}\]
@@ -71,11 +65,9 @@ Then, by using Equation \ref{Equ:ChangeInformation}, we can construct a bit-stre
 B_S = \{b_0,b_1,b_2,...,b_n\}
 \end{equation}
 
-We denote Equ.\ref{Equ:BitStream} as the change information of time series $S$. After getting this change information of time series $S$, we can then use it to calculate the correlation between different time series.
+We denote Equation.\ref{Equ:BitStream} as the change information of the time series $S$. After getting the change information of time series $S$, we can then use it to calculate the correlation between different time series.
 
-For the above discussion, we can find there are two key challenge for this change information extraction: (1) Given a sub-series $l_i$, how to denote whether there is a change in this sub-series, and (2) how to choose the sub-series length $w$.
-
-In order to denote whether there's a change in the sub-series, we propose a change detection method to deal with this problem. On the other hand, we also discuss the sub-series length in our method.
+There are two key problems for the change information extraction task: (1) Given a sub-series $l_i$, how to denote whether there is a change in this sub-series, and (2) how to choose the sub-series length $w$. In this rest of this section, we introduce the solutions for above two problems.
 
 \subsection{Change Detection in sub-series}
 \label{sec:changeDetect}
@@ -91,14 +83,15 @@ Denote whether there is a change in $X$.
 \end{definition}
 It is pointed out that, this problem is a binary classification problem, and the classification label is ``exist change" or ``without change".
 
-In the result world, the change of a time series has three basic formations: 
+In the real-world, the change of a time series has three basic formations: 
 \begin{itemize}
   \item \textbf{Frequency Change:} If the time series is a periodic time series and the frequency of the time series changes. 
   \item \textbf{Mean Change:} There is a mean shift happens in the time series.
   \item \textbf{Variance Change:} The variance of a time series changes.
 \end{itemize}
-We illustrate three different types of the time series in Fig. \ref{fig:ChangeType}.
-And in this paper, we detect these three types of change individually, if there any of the change happens in this sub-series, we then say that there is a change in this sub-series.
+We illustrate these three different types of changes in Fig. \ref{fig:ChangeType}.
+And in this paper, we detect these three types of change individually.
+Given a time series $S$, if any of the change happens in $S$, we then say that there is a change in this sub-series. Otherwise, there is no change happens in $S$.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.5\textwidth]{ChangeType.eps}
@@ -108,7 +101,7 @@ And in this paper, we detect these three types of change individually, if there 
 
 \subsubsection{Frequency Change Detection}
 
-For a periodic time series, if there is a frequency change happens in this time series, then the there frequency must be multiple ($\geq 2 $) frequencies in this time series. In other words, if we can detect more than one frequency in this time series, there must be a frequency change happens.
+For a periodic time series, if there is a frequency change happens in this time series, then the there must be multiple ($\geq 2 $) frequencies in this time series as showed in Fig.\ref{fig:FFT}. In other words, if we can detect more than one frequency in this time series, there must be a frequency change happens.
 
 In this work, we use Fourier transformation to detect the number of frequencies in a time series, Given a time series $X = \{x_0,x_1,x_2,...,x_n\}$, the discrete Fourier transformation (DFT) is showed as follow:
 
